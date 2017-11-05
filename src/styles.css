@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+.header {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.firstLayout {
+  background-image: url(/assets/city.jpg);
+  background-repeat: no-repeat;
+  /*background-attachment: fixed;*/
+  background-position: left top;
+  background-size: 100% 100%;
+ }
+.firstLayoutText {
+  background-color: rgba(255, 255, 255, 0.6);
+}

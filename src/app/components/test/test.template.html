@@ -1,0 +1,12 @@
+<h1>This is a Test Component <br>{{title}}</h1>
+<h2>Show record</h2>
+{{TestRecords.ID}} "{{TestRecords.TEXT_VAR_128}}" {{TestRecords.TEXT_TEXT}}
+<h2>Show Local array of Records from JSON</h2>
+<ul>
+  <li *ngFor="let TestRecord of TestArray">{{TestRecord.ID}} "{{TestRecord.TEXT_VAR_128}}" "{{TestRecord.TEXT_TEXT}}"</li>
+</ul>
+
+<h2>Show JSON array from API</h2>
+<ul>
+  <li *ngFor="let APIArrayRow of APIArray">{{APIArrayRow.ID}} "{{APIArrayRow.TEXT_VAR_128}}" "{{APIArrayRow.TEXT_TEXT}}"</li>
+</ul>

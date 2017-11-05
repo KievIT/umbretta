@@ -1,0 +1,28 @@
+<div *ngFor = "let layout of innerLayoutArray">
+  <div  [ngSwitch]= "layout.imgPosition"  class="row">
+    <!-- <div *ngSwitchCase ="'right'"> -->
+      <div  *ngSwitchCase ="'right'" class="col">
+        <h3>{{layout.title}}</h3>
+        {{layout.text}}
+      </div>
+      <div *ngSwitchCase ="'right'" class="col">
+        {{layout.imgLink}}
+      </div>
+    <!-- </div> -->
+    <!-- <div *ngSwitchCase ="'left'"> -->
+      <div *ngSwitchCase ="'left'" class="col">
+        {{layout.imgLink}}
+      </div>
+      <div  *ngSwitchCase ="'left'" class="col">
+        <h3>{{layout.title}}</h3>
+        {{layout.text}}
+      </div>
+      <div  *ngSwitchCase ="'none'" class="col text-center">
+
+          <h3 style="text-justify: center" >{{layout.title}}</h3>
+          {{layout.text}}
+
+      </div>
+    <!-- </div> -->
+  </div>
+</div>
