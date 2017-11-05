@@ -22,8 +22,12 @@
         "styles.css", "../node_modules/bootstrap/dist/css/bootstrap.min.css"
       ],
       "scripts": [
+<<<<<<< HEAD
         "../node_modules/jquery/dist/jquery.min.js"
         ,"../node_modules/tether/dist/js/tether.min.js", "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+=======
+        "../node_modules/jquery/jquery.min.js" ,"../node_modules/tether/dist/js/tether.min.js", "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+>>>>>>> 29aa54e2e8c6d4b4605bec5b35d1621f18916906
 
       ],
       "environmentSource": "environments/environment.ts",
