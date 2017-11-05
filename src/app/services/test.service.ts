@@ -8,7 +8,7 @@ export class TestService{
     console.log('Test Service Initialized.');
   }
   getTestData(){
-    return this.http.get('http://localhost/api.php/testme/1,2')
+    return this.http.get('http://localhost/tmp/rest-api/testme/1,2')
        .map(res => res.json());
   }
 }

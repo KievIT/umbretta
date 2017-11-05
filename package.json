@@ -28,14 +28,9 @@
     "angular2-jwt": "^0.2.3",
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
-<<<<<<< HEAD
     "jquery": "^3.2.1",
     "latest": "^0.2.0",
-    "popper": "^1.0.0",
-=======
-    "jquery": "^1.9.1",
     "popper.js": "^1.12.6",
->>>>>>> 29aa54e2e8c6d4b4605bec5b35d1621f18916906
     "rxjs": "^5.4.2",
     "tether": "^1.4.0",
     "zone.js": "^0.8.14"
