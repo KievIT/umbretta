@@ -1,28 +1,24 @@
 <div *ngFor = "let layout of innerLayoutArray">
-  <div  [ngSwitch]= "layout.imgPosition"  class="row">
+  <div  [ngSwitch]= "layout.imgPosition"  class="row no-gutters justify-content-between">
     <!-- <div *ngSwitchCase ="'right'"> -->
-      <div  *ngSwitchCase ="'right'" class="col">
+    <div *ngSwitchCase ="'right'" class="col-1"></div>
+      <div  *ngSwitchCase ="'right'" class="col-5" style="margin-top: 2%;">
         <h3>{{layout.title}}</h3>
         {{layout.text}}
       </div>
-      <div *ngSwitchCase ="'right'" class="col">
-        {{layout.imgLink}}
+      <div *ngSwitchCase ="'right'" class="col-6">
+        <img [src]=layout.imgLink class="img-fluid" style="width: 800px;" />
       </div>
     <!-- </div> -->
     <!-- <div *ngSwitchCase ="'left'"> -->
-      <div *ngSwitchCase ="'left'" class="col">
-        {{layout.imgLink}}
+      <div *ngSwitchCase ="'left'" class="col-6">
+        <img [src]=layout.imgLink class="img-fluid" style="width: 800px;" />
       </div>
-      <div  *ngSwitchCase ="'left'" class="col">
+      <div  *ngSwitchCase ="'left'" class="col-5" style="margin-top: 2%;">
         <h3>{{layout.title}}</h3>
         {{layout.text}}
       </div>
-      <div  *ngSwitchCase ="'none'" class="col text-center">
 
-          <h3 style="text-justify: center" >{{layout.title}}</h3>
-          {{layout.text}}
-
-      </div>
     <!-- </div> -->
   </div>
 </div>
