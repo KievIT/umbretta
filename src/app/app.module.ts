@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //First Page Module seems like should be routed or somehow called.
 //FirstPageComponent it shows that it being running using Console.Log but display nothing
+import { GlobalVariables } from './globals';
 import { FirstPageModule } from './pages/first-page/first-page.module';
 import { TestComponent } from './components/test/test.component';
 import { navItemContent} from './components/nav-item/nav-item';
@@ -18,6 +19,9 @@ import { GmapsComponent } from './components/googlemaps/googlemaps.component';
 import {firstLayout} from './components/firstLayout/firstLayout';
 import {innerLayoutContent} from './components/innerLayout/innerLayout';
 
+//let global = new Globals; //global parameters initialization
+//console.log(GlobalVariables['PHP_API_PATH']);
+// console.log(Global.PHP_API_PATH);
 
 @NgModule({
   //Declaration of Internal Application Components
@@ -33,18 +37,19 @@ import {innerLayoutContent} from './components/innerLayout/innerLayout';
   ],
   //External Angular and Other Vendors Modules
   imports: [
-    AgmCoreModule.forRoot({
-     apiKey: 'AIzaSyCESyzus6Bs7X-5_-38X0bkqJjD9ATRJVI'
-   }),
+  //GoogleMaps initialization
+     AgmCoreModule.forRoot({
+       apiKey: GlobalVariables['GOOGLE_API_KEY']
+    }),
     BrowserModule,
     HttpModule,
     FormsModule,
     NgbModule.forRoot(),
     FirstPageModule
   ],
-  providers: [  ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 
- }
+}
