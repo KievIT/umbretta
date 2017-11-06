@@ -18,6 +18,7 @@ import { NgbdAlertCloseable } from './components/alert-closeable/alert-closeable
 import { GmapsComponent } from './components/googlemaps/googlemaps.component';
 import {firstLayout} from './components/firstLayout/firstLayout';
 import {innerLayoutContent} from './components/innerLayout/innerLayout';
+import { secondLayout } from './second-layout/second-layout.component';
 
 //let global = new Globals; //global parameters initialization
 //console.log(GlobalVariables['PHP_API_PATH']);
@@ -33,7 +34,8 @@ import {innerLayoutContent} from './components/innerLayout/innerLayout';
      HeaderComponent,
      GmapsComponent,
      firstLayout,
-     innerLayoutContent
+     innerLayoutContent,
+     secondLayout
   ],
   //External Angular and Other Vendors Modules
   imports: [

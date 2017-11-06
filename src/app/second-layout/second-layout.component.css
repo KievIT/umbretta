@@ -1,0 +1,8 @@
+.secondLayout{
+  background-image: url(/assets/machine3.png);
+  background-repeat: no-repeat;
+  /*background-attachment: fixed;*/
+  background-position: left top;
+  background-size: auto 100%;
+  background-color: Gainsboro;
+}

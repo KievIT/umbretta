@@ -6,7 +6,7 @@ import { ContentService} from '../../services/content.service';
     templateUrl: './firstLayout.html', // Auto required by webpack
 })
 export class firstLayout {
-  private imgMachine = require("assets/machine.png");
+  private imgMachine = require("assets/machine1.png");
   private content: ContentType ;
   private contentArray: ContentType[];
   constructor(
