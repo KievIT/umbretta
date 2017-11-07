@@ -8,6 +8,17 @@ import { Component } from '@angular/core';
     }
   `],
   template: `
+  <div class="row">
+    <div class="col" style = "margin-bottom: -40px; z-index: 100;">
+      <div class="btn-group" role="group" aria-label="Cities">
+        <button type="button" class="btn btn-secondary" (click)="onClick(40.705869, -74.009936)">New York</button>
+        <button type="button" class="btn btn-secondary" (click)="onClick(41.853854, -87.633130)">Chicago</button>
+        <button type="button" class="btn btn-secondary" (click)="onClick(34.049750, -118.33762)">Los Angeles</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
         <agm-map [latitude]="lat" [longitude]="lng">
           <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
           <agm-marker *ngFor="let m of markers; let i = index"
@@ -21,6 +32,8 @@ import { Component } from '@angular/core';
             </agm-info-window>
           </agm-marker>
         </agm-map>
+      </div>
+    </div>
   `,
 })
 
@@ -30,10 +43,15 @@ export class GmapsComponent {
       console.log(`clicked the marker: ${label || index}`)
   }
   // google maps zoom level
-  zoom: number = 8;
+  zoom: number = 15;
   // initial center position for the map
-  lat: number = 51.673858;
-  lng: number = 7.815982;
+  lat: number = 40.705869;
+  lng: number =  -74.009936;
+
+  onClick(lat: number, lng: number){
+      this.lat = lat;
+      this.lng = lng;
+  }
 
   markers: marker[] = [
         {
@@ -65,6 +83,8 @@ export class GmapsComponent {
    this.zoom;
    this.markers;
  }
+
+
 
 }
 // just an interface for type safety.

@@ -1,11 +1,11 @@
 <div class="row no-gutters secondLayout">
   <div class="col">
     <div class="row">
-      <div class="col text-center LayoutText">
+      <div class="col text-center LayoutText" id="Features">
         <h3>{{content?.name}}</h3>
       </div>
     </div>
-    <div class="row justify-content-center LayoutText text-center">
+    <div class="row justify-content-center LayoutText text-center" >
       <div class="col-1"></div>
       <div class="col">
         <div *ngFor = "let Features1 of KioskFeaturesBlock1">
@@ -28,7 +28,7 @@
     <div class="row">
       <div class="col-5">
       </div>
-      <div class="col-6">
+      <div class="col-4" id="Ads">
         <h2>Advertisement solution</h2>
         <div *ngFor = "let adv of AdvertisementSolution">
           <h4>{{adv?.name}}</h4>

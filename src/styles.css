@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 .header {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .firstLayout {
   background-image: url(/assets/city.jpg);
