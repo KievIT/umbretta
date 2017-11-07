@@ -7,12 +7,12 @@
         {{layout?.description}}
       </div>
       <div *ngSwitchCase ="'right'" class="col-6">
-        <img [src]=layout?.imgPath class="img-fluid" style="min-width: 100%;" />
+        <img src={{layout?.imgPath}} class="img-fluid" style="min-width: 100%;" />
       </div>
     <!-- </div> -->
     <!-- <div *ngSwitchCase ="'left'"> -->
       <div *ngSwitchCase ="'left'" class="col-6">
-        <img [src]=layout?.imgPath class="img-fluid" style="min-width: 100%;;" />
+        <img src={{layout?.imgPath}} class="img-fluid" style="min-width: 100%;;" />
       </div>
       <div  *ngSwitchCase ="'left'" class="col-5" style="margin-top: 2%;">
         <h3>{{layout?.name}}</h3>
