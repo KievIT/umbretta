@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 // let global = new Globals;
@@ -12,20 +13,26 @@ export class ContentService{
       innerPage3: { name: "The rain won't empty...", text: "Umbrella......", picture: 'assets/img3.jpg',imgPosition:'left' },
       KioskFeatures : { name: "Kiosk features", text: "Features......", picture: "assets/machinefront.png",imgPosition:"none" },
     };
+
   private ContentArray: any[];
 
-  constructor() {
-    console.log('Content Service Initialized.');
+  constructor(private http: Http) {
+    console.log('Content Service Called.');
     // this.userArray = Object.values(this.users);
   }
-  getAllPageText(): Observable<any> {
+  getLocalAllPageText(): Observable<any> {
     return Observable.of(this.ContentText);
   }
-  getPageText(arg: string): Observable<any> {
+  getLocalPageText(arg: string): Observable<any> {
     return Observable.of(this.ContentText[arg]);
   }
 
   getPageArray(): Observable<any[]> {
     return Observable.of(this.ContentArray);
+  }
+
+  getPageText(arg: string){
+    return this.http.get('http://localhost/tmp/rest-api/api.php/umb_content/'+arg)
+       .map(res => res.json());
   }
 }

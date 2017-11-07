@@ -8,20 +8,19 @@ import { Component } from '@angular/core';
     }
   `],
   template: `
-    <agm-map [latitude]="lat" [longitude]="lng">
-      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-      <agm-marker *ngFor="let m of markers; let i = index"
-          (markerClick)="clickedMarker(m.label, i)"
-          [latitude]="m.lat"
-          [longitude]="m.lng"
-          [label]="m.label"
-          [markerDraggable]="m.draggable">
-          <agm-info-window [disableAutoPan]="true">
-           {{m.info}}
-        </agm-info-window>
-      </agm-marker>
-
-    </agm-map>
+        <agm-map [latitude]="lat" [longitude]="lng">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          <agm-marker *ngFor="let m of markers; let i = index"
+              (markerClick)="clickedMarker(m.label, i)"
+              [latitude]="m.lat"
+              [longitude]="m.lng"
+              [label]="m.label"
+              [markerDraggable]="m.draggable">
+              <agm-info-window [disableAutoPan]="true">
+               {{m.info}}
+            </agm-info-window>
+          </agm-marker>
+        </agm-map>
   `,
 })
 

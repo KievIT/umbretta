@@ -1,0 +1,42 @@
+<div class="row no-gutters secondLayout">
+  <div class="col">
+    <div class="row">
+      <div class="col text-center LayoutText">
+        <h3>{{content?.name}}</h3>
+      </div>
+    </div>
+    <div class="row justify-content-center LayoutText text-center">
+      <div class="col-1"></div>
+      <div class="col">
+        <div *ngFor = "let Features1 of KioskFeaturesBlock1">
+            <h4>{{Features1?.name}}</h4>
+            {{Features1?.description}}
+            <br>
+        </div>
+      </div>
+      <div class="col">
+        <img [src]=content?.imgPath class="img-responsive float-center" style="height: 35vw;"/>
+      </div>
+      <div class="col">
+        <div *ngFor = "let Features2 of KioskFeaturesBlock2">
+                  <h4>{{Features2?.name}}</h4>
+                  {{Features2?.description}}
+                  <br>
+        </div> </div>
+      <div class="col-1"></div>
+    </div>
+    <div class="row">
+      <div class="col-5">
+      </div>
+      <div class="col-6">
+        <h2>Advertisement solution</h2>
+        <div *ngFor = "let adv of AdvertisementSolution">
+          <h4>{{adv?.name}}</h4>
+          {{adv?.description}}
+        </div>
+
+      </div>
+      <div class="col-1">
+      </div>
+    </div>
+</div>

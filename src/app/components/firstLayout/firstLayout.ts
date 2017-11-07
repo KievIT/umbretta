@@ -14,16 +14,18 @@ export class firstLayout {
   ){
     // this.contentService.getAllPageText()
     // .subscribe(contentArray => this.content = contentArray.firstPage);
-     this.contentService.getPageText('firstPage')
+     this.contentService.getPageText('1')
        .subscribe(Content => this.content = Content);
-     this.imgMachine;
+     // this.imgMachine;
      // console.log(this.content['name']);
   };
 }
 
 interface ContentType {
+  content_id: number,
+  group_name: string,
   name: string;
-  text: string;
-  picture: string;
+  description: string;
+  imgPath: string;
   imgPosition: string;
 }
