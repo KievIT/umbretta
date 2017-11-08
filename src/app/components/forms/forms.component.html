@@ -1,49 +1,47 @@
 <!-- <div [hidden]="!buttonEnabled">
 Need to set up a message that we form sent already and we'll conact soon
 -->
-<div >
   <br>
-  <h3 align=center>Request More Details</h3>
-  <form novalidate (ngSubmit)="onSubmit(f)" #f="ngForm">
-    <div class="form-group form-control-lg">
+    <h3 class="text-center">Request More Details</h3>
+      <form novalidate (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group  ">
       <!-- <span>Full name</span> -->
-      <input
-           class="form-control form-control-lg"
-           type="text"
-           placeholder="Enter your name"
-           name="name"
-           ngModel required>
-    </div>
-    <div class="form-group form-control-lg">
-      <input type="text" class="form-control form-control-lg" id="exampleInputEmail1"
-            name="phone"
-            aria-describedby="phoneHelp" placeholder="Enter phone number" ngModel required>
-      <small id="phoneHelp" class="form-text text-muted">We'll call you once your request processed</small>
-    </div>
-    <div class="form-group form-control-lg">
-      <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"
+          <input
+              class="form-control  "
+              type="text"
+              placeholder="Enter your name"
+              name="name"
+              ngModel required>
+        </div>
+        <div class="form-group  ">
+          <input type="text" class="form-control  " id="exampleInputEmail1"
+              name="phone"
+              aria-describedby="phoneHelp" placeholder="Enter phone number" ngModel required>
+              <small id="phoneHelp" class="form-text text-muted">We'll call you once your request processed</small>
+        </div>
+        <div class="form-group  ">
+          <input type="email" class="form-control  " id="exampleInputEmail1"
             name="email"
             aria-describedby="emailHelp" placeholder="Enter email" ngModel required>
-      <small id="emailHelp" class="form-text text-muted">We'll use this as alternative channel to reach you.</small>
-    </div>
-    <div class="form-group form-control-lg">
-      <select name="city" class="form-control form-control-lg" aria-describedby="cityHelp" ngModel>
-        <option value = 'New York' selected>New York</option>
-        <option  value = 'New Jersey' >New Jersey</option>
-      </select>
-      <small id="cityHelp" class="form-text text-muted">Please choose city we operate in</small>
-    </div>
-    <div class="form-group form-control-lg">
-      <input
-           class="form-control form-control-lg" aria-describedby="questionHelp"
-           type="text"
-           placeholder="Type here if any ongoing questions"
-           name="question"
-           ngModel>
-      <small id="questionHelp" class="form-text text-muted">We'll provide exact information basing on given details</small>
-    </div>
-    <button [disabled]="!buttonEnabled"  type="submit" class="btn btn-primary btn-lg" >Send Request</button>
+          <small id="emailHelp" class="form-text text-muted">We'll use this as alternative channel to reach you.</small>
+        </div>
+        <div class="form-group  ">
+          <select name="city" class="form-control  " aria-describedby="cityHelp" ngModel>
+            <option value = 'New York' selected>New York</option>
+            <option value = 'New Jersey' >New Jersey</option>
+          </select>
+          <small id="cityHelp" class="form-text text-muted">Please choose city we operate in</small>
+        </div>
+        <div class="form-group  ">
+          <input
+            class="form-control  " aria-describedby="questionHelp"
+            type="text"
+            placeholder="Type here if any ongoing questions"
+            name="question"
+            ngModel>
+            <small id="questionHelp" class="form-text text-muted">We'll provide exact information basing on given details</small>
+          </div>
+        <button [disabled]="!buttonEnabled"  type="submit" class="btn btn-primary" >Send Request</button>
   </form>
     <!-- {{ f.value | json }}
     {{ user.name | json }} -->
-</div>

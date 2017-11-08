@@ -10,5 +10,21 @@
   background-size: 100% 100%;
  }
 .LayoutText {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-cities{
+  background-color: rgba(255, 255, 255, 0);
+
+}
+.btn-cities:hover, .btn-cities :focus{
+  /*color: #292b2c;*/
+  /*background-color: #e6e6e6;*/
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.btn-cities.disabled {
+  background-color: rgba(255, 255, 255, 0);
+  /*border-color: #ccc;*/
 }

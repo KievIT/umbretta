@@ -9,13 +9,22 @@ import { Component } from '@angular/core';
   `],
   template: `
   <div class="row">
-    <div class="col" style = "margin-bottom: -40px; z-index: 100;">
-      <div class="btn-group" role="group" aria-label="Cities">
-        <button type="button" class="btn btn-secondary" (click)="onClick(40.705869, -74.009936)">New York</button>
-        <button type="button" class="btn btn-secondary" (click)="onClick(41.853854, -87.633130)">Chicago</button>
-        <button type="button" class="btn btn-secondary" (click)="onClick(34.049750, -118.33762)">Los Angeles</button>
+    <div class="col-3"></div>
+      <div class="col-6 LayoutText" style="height: 100px; margin: 20px 0 -160px 0; z-index: 100; background-color: rgba(255, 255, 255, 0,5);">
+        <div class="row">
+          <div class="col">
+            <h2 class="text-center">Umbretta Kiosks on the Map</h2>
+          </div>
+        </div>
+        <div class="row" style="height: 58%">
+          <div class="col btn-cities text-center align-self-end" (click)="onClick(40.705869, -74.009936)"> <h6>New York</h6> </div>
+          <div class="col btn-cities text-center align-self-end" (click)="onClick(42.358852, -71.056855)"> <h6>Boston</h6> </div>
+          <div class="col btn-cities text-center align-self-end" (click)="onClick(41.853854, -87.633130)"> <h6>Chicago</h6> </div>
+          <div class="col btn-cities text-center align-self-end" (click)="onClick(34.049750, -118.33762)"> <h6>Los Angeles</h6> </div>
+          <div class="col btn-cities text-center align-self-end" (click)="onClick(37.771725, -122.419750)"> <h6>San Francisco</h6> </div>
+        </div>
       </div>
-    </div>
+    <div class="col-3"></div>
   </div>
   <div class="row">
     <div class="col">
