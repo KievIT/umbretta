@@ -20,6 +20,7 @@ import {firstLayout}          from './components/firstLayout/firstLayout';
 import {innerLayoutContent }  from './components/innerLayout/innerLayout';
 import { secondLayout }       from './components/second-layout/second-layout.component';
 import { FormsComponent }     from './components/forms/forms.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 //let global = new Globals; //global parameters initialization
 //console.log(GlobalVariables['PHP_API_PATH']);
@@ -37,7 +38,8 @@ import { FormsComponent }     from './components/forms/forms.component';
       firstLayout,
       innerLayoutContent,
       secondLayout,
-      FormsComponent
+      FormsComponent,
+      ContactComponent
   ],
   //External Angular and Other Vendors Modules
   imports: [
