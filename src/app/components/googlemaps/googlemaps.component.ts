@@ -28,7 +28,7 @@ import { Component } from '@angular/core';
   </div>
   <div class="row">
     <div class="col">
-        <agm-map [latitude]="lat" [longitude]="lng">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="'roadmap'">
           <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
           <agm-marker *ngFor="let m of markers; let i = index"
               (markerClick)="clickedMarker(m.label, i)"
@@ -45,7 +45,8 @@ import { Component } from '@angular/core';
     </div>
   `,
 })
-
+// <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="'hybrid'"></agm-map>
+// worked for me... Options are: 'roadmap' | 'hybrid' | 'satellite' | 'terrain'
 export class GmapsComponent {
 
   clickedMarker(label: string, index: number) {

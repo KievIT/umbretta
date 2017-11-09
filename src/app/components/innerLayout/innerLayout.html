@@ -2,7 +2,8 @@
   <div  [ngSwitch]= "layout?.imgPosition"  class="row no-gutters justify-content-between">
     <!-- <div *ngSwitchCase ="'right'"> -->
     <div *ngSwitchCase ="'right'" class="col-1"></div>
-      <div  *ngSwitchCase ="'right'" class="col-5" style="margin-top: 2%;">
+    <!-- Left Text -->
+      <div  *ngSwitchCase ="'right'" class="col-5" style="margin-top: 180px;">
         <h3>{{layout?.name}}</h3>
         {{layout?.description}}
       </div>
@@ -14,7 +15,8 @@
       <div *ngSwitchCase ="'left'" class="col-6">
         <img src={{layout?.imgPath}} class="img-fluid" style="min-width: 100%;;" />
       </div>
-      <div  *ngSwitchCase ="'left'" class="col-5" style="margin-top: 2%;">
+      <!-- Right Text -->
+      <div  *ngSwitchCase ="'left'" class="col-5" style="margin-top: 180px;">
         <h3>{{layout?.name}}</h3>
         {{layout?.description}}
       </div>

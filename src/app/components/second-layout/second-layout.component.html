@@ -5,20 +5,20 @@
         <h3 style="margin-top:15px;">{{content?.name}}</h3>
       </div>
     </div>
-    <div class="row justify-content-center LayoutText text-center" style="height: 500px;">
+    <div class="row justify-content-center LayoutText text-center" style="height: 700px;">
       <div class="col-1"></div>
-      <div class="col">
-        <div *ngFor = "let Features1 of KioskFeaturesBlock1">
+      <div class="col" style="margin-top:80px;">
+        <div *ngFor = "let Features1 of KioskFeaturesBlock1" style="margin-top:15px; height: 120px">
             <h4>{{Features1?.name}}</h4>
             {{Features1?.description}}
             <br>
         </div>
       </div>
       <div class="col">
-        <img src={{content?.imgPath}} class="img-responsive float-center" style="height: 35vw;"/>
+        <img src={{content?.imgPath}} class="img-responsive float-center" style="height: 700px;"/>
       </div>
-      <div class="col">
-        <div *ngFor = "let Features2 of KioskFeaturesBlock2">
+      <div class="col" style="margin-top:80px;">
+        <div *ngFor = "let Features2 of KioskFeaturesBlock2" style="margin-top:15px; height: 120px">
                   <h4>{{Features2?.name}}</h4>
                   {{Features2?.description}}
                   <br>
@@ -28,9 +28,9 @@
     <div class="row" style="height: 500px">
       <div class="col-5">
       </div>
-      <div class="col-4" id="Ads">
+      <div class="col-4" id="Ads" >
         <h2 style="margin-top:15px;">Advertisement solution</h2>
-        <div *ngFor = "let adv of AdvertisementSolution">
+        <div  class="col" *ngFor = "let adv of AdvertisementSolution"  style="margin-top:20px; height: 140px">
           <h4>{{adv?.name}}</h4>
           {{adv?.description}}
         </div>

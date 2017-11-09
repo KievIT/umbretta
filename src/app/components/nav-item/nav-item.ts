@@ -9,12 +9,12 @@ export class navItemContent {
   ContentArray: ContentArrayType[];
 
   constructor() {
-    this.ContentArray = [{link:"Umbretta", href:"#"}
-    ,{link:"Features", href:"#Features"}
+    this.ContentArray = [
+     {link:"Features", href:"#Features"}
     ,{link:"Ads", href:"#Ads"}
     ,{link:"Map", href:"#Map"}
     ,{link:"Request", href:"#Request"}
-    ,{link:"Charity", href:"#Charity"}
+    // ,{link:"Charity", href:"#Charity"}
     ,{link:"Contact us", href:"#Contact"} ];
     }
 }
