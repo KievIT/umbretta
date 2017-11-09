@@ -1,15 +1,13 @@
-<div class="row" style="height: 90%">
-  <div class="col-5">
-      <img src={{content?.imgPath}} class="img-responsive float-left" style="height: 40vw;" />
+<div class="row" style="min-height: 550px">
+<div class="col-md-1"></div>
+  <div class="clearfix hidden-sm-down col-md-4 machine">
+    <!-- <img src={{content?.imgPath}} class="img-responsive float-left" style="height: 45vw" /> -->
   </div>
-  <div class="col-7">
-    <div class="row" style="min-height: 60%">
-      <div class="col-1"></div>
-      <div class="col-10 LayoutText" style="margin: 5% 0 5% 0">
-            <h3>{{content?.name}}</h3>
-            <div innerHTML="{{content?.description}}">/div>
 
-        </div>
-      </div>
+  <div class="col-sm col-md-5 LayoutText" style="margin: 5% 2% 5% 2%">
+      <h3>{{content?.name}}</h3>
+      <span innerHTML="{{content?.description}}"></span>
   </div>
+
+
 </div>
