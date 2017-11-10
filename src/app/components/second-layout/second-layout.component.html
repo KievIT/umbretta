@@ -1,42 +1,64 @@
 <div class="row no-gutters secondLayout">
   <div class="col">
+
     <div class="row">
       <div class="col text-center LayoutText" id="Features" >
-        <h3 style="margin-top:15px;">{{content?.name}}</h3>
+        <br>
+        <h2>{{content?.name}}</h2>
       </div>
     </div>
-    <div class="row justify-content-center LayoutText text-center" style="height: 700px;">
-      <div class="col-1"></div>
-      <div class="col" style="margin-top:80px;">
-        <div *ngFor = "let Features1 of KioskFeaturesBlock1" style="margin-top:15px; height: 120px">
+
+    <div class="row  LayoutText align-items-center">
+
+      <div class="col-sm-4 offset-sm-1 col-xs">
+        <div *ngFor = "let Features1 of KioskFeaturesBlock1" class="row">
+          <div class="col-sm"><br>
             <h4>{{Features1?.name}}</h4>
-            {{Features1?.description}}
-            <br>
+              {{Features1?.description}}
+              <br><br>
+          </div>
         </div>
       </div>
-      <div class="col">
-        <img src={{content?.imgPath}} class="img-responsive float-center" style="height: 700px;"/>
+
+      <div class="col-sm-3 clearfix hidden-sm-down ">
+        <img src={{content?.imgPath}} class="img-responsive float-center" style="width: 100%;"/>
       </div>
-      <div class="col" style="margin-top:80px;">
-        <div *ngFor = "let Features2 of KioskFeaturesBlock2" style="margin-top:15px; height: 120px">
-                  <h4>{{Features2?.name}}</h4>
+
+      <div class="col-sm-4 col-xs">
+        <div *ngFor = "let Features2 of KioskFeaturesBlock2" class="row">
+          <div class="col-sm"><br>
+              <h4>{{Features2?.name}}</h4>
                   {{Features2?.description}}
                   <br>
-        </div> </div>
-      <div class="col-1"></div>
-    </div>
-    <div class="row" style="height: 500px">
-      <div class="col-5">
-      </div>
-      <div class="col-4" id="Ads" >
-        <h2 style="margin-top:15px;">Advertisement solution</h2>
-        <div  class="col" *ngFor = "let adv of AdvertisementSolution"  style="margin-top:20px; height: 140px">
-          <h4>{{adv?.name}}</h4>
-          {{adv?.description}}
+          </div>
         </div>
-
       </div>
-      <div class="col-1">
+
+    </div>
+
+    <div class="row" style="min-height: 500px;">
+      <div class="col-sm-5 offset-sm-6 clearfix hidden-xs-down" id="Ads" >
+        <br>
+        <h2 class="text-center">Advertisement solution</h2>
+          <div  class="row" *ngFor = "let adv of AdvertisementSolution">
+            <div class="col-sm">
+              <h4 class="text-center">{{adv?.name}}</h4>
+              {{adv?.description}}
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col clearfix hidden-sm-up " id="Ads">
+    <br>
+      <h2 class="text-center ">Advertisement solution </h2><br>
+      <div  class="row" *ngFor = "let adv of AdvertisementSolution">
+        <div class="col-sm">
+          <h4 class="text-center">{{adv?.name}}</h4>
+          {{adv?.description}}
+      </div>
+    </div>
+  </div>
 </div>

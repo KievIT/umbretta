@@ -822,28 +822,28 @@ pre code {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 0;
+  padding-left: 0;
 }
 
 @media (min-width: 576px) {
   .container-fluid {
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 
 @media (min-width: 768px) {
   .container-fluid {
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 
 @media (min-width: 992px) {
   .container-fluid {
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 
@@ -862,35 +862,35 @@ pre code {
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 @media (min-width: 576px) {
   .row {
-    margin-right: -15px;
-    margin-left: -15px;
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 
 @media (min-width: 768px) {
   .row {
-    margin-right: -15px;
-    margin-left: -15px;
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 
 @media (min-width: 992px) {
   .row {
-    margin-right: -15px;
-    margin-left: -15px;
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 
 @media (min-width: 1200px) {
   .row {
-    margin-right: -15px;
-    margin-left: -15px;
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 
