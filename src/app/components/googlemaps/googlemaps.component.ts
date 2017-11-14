@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-
+import { GmapsService } from '../../services/gmaps.service';
 @Component({
   selector: 'ngx-gmaps',
+  providers: [GmapsService],
   styles: [`
     agm-map {
       height: 550px;
@@ -10,23 +11,15 @@ import { Component } from '@angular/core';
   templateUrl: './googlemaps.component.html',
 })
 // <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="'hybrid'"></agm-map>
-// worked for me... Options are: 'roadmap' | 'hybrid' | 'satellite' | 'terrain'
+//  Options are: 'roadmap' | 'hybrid' | 'satellite' | 'terrain'
 export class GmapsComponent {
-
-  clickedMarker(label: string, index: number) {
-      console.log(`clicked the marker: ${label || index}`)
-  }
   // google maps zoom level
   zoom: number = 15;
   // initial center position for the map
   lat: number = 40.705869;
   lng: number =  -74.009936;
 
-  onClick(lat: number, lng: number){
-      this.lat = lat;
-      this.lng = lng;
-  }
-
+  private gcity: gCityType[] ;
   markers: marker[] = [
         {
           lat: 51.673858,
@@ -50,16 +43,35 @@ export class GmapsComponent {
           draggable: true
         }
       ];
- constructor(){
+  // gcity =
+    // [1, "New York", 15, "40.705869", "-74.009936", "Y"],
+    // [2, "Boston", 15, "42.358852", "-71.056855", "Y"],
+    // [3, "Chicago", 15, "41.853854", "-87.633130", "Y"],
+    // [4, "Los Angeles", 15, "34.049750", "-118.337620", "Y"],
+    // [5, "San Francisco", 15, "37.771725", "-122.419750", "Y"]
+  //   ;
+ constructor(private gmapsService: GmapsService)
+ {
    //attributes which will be used in work
    this.lat;
    this.lng;
    this.zoom;
    this.markers;
+
+     this.gmapsService.getCities()
+      //  .subscribe(gCity => this.gcity = gCity);
+      // .subscribe(data => console.log(data));
+      .subscribe(gCity => console.log(gCity.umb_gmap_cities.records[0]));
+   //   console.log(this.gcity);
  }
 
-
-
+ onClick(lat: number, lng: number){
+     this.lat = lat;
+     this.lng = lng;
+ }
+ clickedMarker(label: string, index: number) {
+     console.log(`clicked the marker: ${label || index}`)
+ }
 }
 // just an interface for type safety.
 interface marker {
@@ -68,4 +80,13 @@ interface marker {
 	label?: string;
   info?:string;
 	draggable: boolean;
+}
+
+interface gCityType {
+  city_id: number,
+  city_name: string,
+  initial_zoom_level: string;
+  initial_lat: string;
+  initial_lng: string;
+  visible: string;
 }

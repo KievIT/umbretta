@@ -2,6 +2,7 @@
 .header {
   background-color: rgba(255, 255, 255, 0.5);
 }
+
 .firstLayout {
   background-image: url(/assets/city.jpg);
   background-repeat: no-repeat;
@@ -13,15 +14,18 @@
 .machine{
   background-image: url(/assets/machine1.png);
   background-repeat: no-repeat;
-  /*background-attachment: fixed;*/
-  background-position: left bottom;
-  background-size: contain;
+  /* background-attachment: fixed; */
+  background-position: right bottom;
+  background-size: 100%;
 }
 
+.FirstLayoutText {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5% 5% 5% 5%;
+}
 .LayoutText {
   background-color: rgba(255, 255, 255, 0.8);
 }
-
 .btn-cities{
   background-color: rgba(255, 255, 255, 0);
 

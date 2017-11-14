@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ContentService} from '../../services/content.service';
 @Component({
     selector: 'firstLayout',
-    providers: [ContentService], //each API data providen need to be included here
+    providers: [ContentService], //each API data provider need to be included here
     templateUrl: './firstLayout.html', // Auto required by webpack
 })
 export class firstLayout {
