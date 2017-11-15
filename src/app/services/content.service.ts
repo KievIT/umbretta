@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { environment }        from '../../environments/environment';
 import 'rxjs/add/observable/of';
 // let global = new Globals;
 @Injectable()
@@ -32,7 +33,7 @@ export class ContentService{
   }
 
   getPageText(arg: string){
-    return this.http.get('http://localhost/tmp/rest-api/api.php/umb_content/'+arg)
+    return this.http.get(environment.crud_php_api+'/umb_content/'+arg)
        .map(res => res.json());
   }
 }

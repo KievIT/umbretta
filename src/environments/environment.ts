@@ -4,5 +4,8 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  crud_php_api: 'http://localhost/tmp/rest-api/api.php/',
+  google_api_key: 'AIzaSyCESyzus6Bs7X-5_-38X0bkqJjD9ATRJVI',
+  google_api_lang: 'EN',
 };

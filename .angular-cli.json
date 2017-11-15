@@ -9,7 +9,8 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "favicon-96x96.png"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -22,7 +23,9 @@
         "styles.css", "bootstrap.css"
       ],
       "scripts": [
-        "../node_modules/jquery/jquery.min.js" ,"../node_modules/tether/dist/js/tether.min.js", "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+        "../node_modules/jquery/jquery.min.js"
+        ,"../node_modules/tether/dist/js/tether.min.js"
+        , "../node_modules/bootstrap/dist/js/bootstrap.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
