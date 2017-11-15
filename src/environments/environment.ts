@@ -6,6 +6,7 @@
 export const environment = {
   production: false,
   crud_php_api: 'http://localhost/tmp/rest-api/api.php/',
+  sendmail: 'http://localhost/tmp/rest-api/senemail.php',
   google_api_key: 'AIzaSyCESyzus6Bs7X-5_-38X0bkqJjD9ATRJVI',
   google_api_lang: 'EN',
 };
