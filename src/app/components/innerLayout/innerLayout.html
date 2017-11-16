@@ -4,7 +4,7 @@
 
       <div  *ngSwitchCase ="'right'" class="col-xs-12 col-sm-5 push-sm-1">
         <h3>{{layout?.name}}</h3>
-        {{layout?.description}}>
+        <span innerHTML="{{layout?.description}}"></span>
       </div>
       <div *ngSwitchCase ="'right'" class="col-xs-12 col-sm-6">
         <img src={{layout?.imgPath}} class="img-fluid" style="min-width: 100%;" />
@@ -15,11 +15,11 @@
       </div>
       <div  *ngSwitchCase ="'left'" class="clearfix hidden-xs-down col-sm-4 offset-sm-1 pull-sm-1">
         <h3>{{layout?.name}}</h3>
-        {{layout?.description}}
+        <span innerHTML="{{layout?.description}}"></span>
       </div>
       <div  *ngSwitchCase ="'left'" class="col-xs-12 clearfix hidden-sm-up flex-first">
         <h3>{{layout?.name}}</h3>
-        {{layout?.description}}
+        <span innerHTML="{{layout?.description}}"></span>
       </div>
 
     </div>

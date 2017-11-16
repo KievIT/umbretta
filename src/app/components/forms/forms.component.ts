@@ -6,14 +6,14 @@ import {User} from './user';
   selector: 'app-forms',
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.css'],
-  // providers: [postformService]
+   providers: [postformService]
 })
 export class FormsComponent  {
-  postformService: postformService;
+
   buttonEnabled=true;
   user: User = new User();
 
-  constructor() {
+  constructor(  private postformService: postformService) {
     this.user.city ='';
     this.user.question='';
     this.buttonEnabled;
@@ -21,7 +21,10 @@ export class FormsComponent  {
 
   // onInit(){}
   submit(user: User) {
-    this.postformService.postData(user).subscribe();
+     console.log(this.user);
+     this.postformService.postDataUser(this.user)
+     .subscribe(data => 
+       {console.log(data);});
     // console.log(user);
     // this.buttonEnabled=false;  //disabling sending severall times in a session
   }

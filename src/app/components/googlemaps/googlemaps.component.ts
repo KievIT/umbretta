@@ -19,7 +19,8 @@ export class GmapsComponent {
   lat: number = 40.705869;
   lng: number =  -74.009936;
 
-  gcity: gCityType[] = [] ;
+  gcity: gCityType  ; //= [0,'','','','','']
+  //gcity["city_name"] = "NY!";
 //  gcity = {1,2,3,4,5,6};
   // console.log(gcity);
   markers: marker[] = [
@@ -62,20 +63,35 @@ export class GmapsComponent {
        this.zoom;
        this.markers;
        this.gcity;
+
          this.gmapsService.getCitiesJSON()
           //  .subscribe(gCity => this.gcity = gCity);
            // .subscribe(data => console.log(data));
-           .subscribe(data => {
+             .subscribe(data => {
               // console.log(data.umb_gmap_cities.records))
               let header_obj = data.umb_gmap_cities.columns;
               let records_obj = data.umb_gmap_cities.records;
               console.log(records_obj);
               for (let i = 0; i < records_obj.length; i++) {
-                  console.log(records_obj[i]);
+              //  this.gcity = records_obj[i] as gCityType ;
+              // this.gcity.push(records_obj[i]);
+              //  console.log(this.gcity);
+
+
+
+                //   ******************
+                //        this.markers.push({'lat':data.geometry.location.lat,'lng':data.geometry.location.lng})
+                //   ****************
+                //  myObject["someString"] = "yeah!"
+                //  *****************
+
+
+                  // records_obj[i] => records_obj[i].json() ;
+                //  console.log(records_obj[i].map(res => res.json()));
                 //  this.gCity.push(records_obj[i]);
                       //const data = new WikiData(jsonData[1][i], jsonData[2][i]);
                   // this.wikiData.push(data);
-             }
+             // }
              // console.log(this.gcity);
               // for (let value in data.umb_gmap_cities.records){
               //   console.log(value);
@@ -84,7 +100,7 @@ export class GmapsComponent {
               // console.log(header_obj);
               //  for(let value in header_obj[1]){
               //     console.log(value);
-              //  }
+                }
             //  console.log(obj[1][1]); //name
               // console.log(Object.keys(obj).map((key)=>{ return obj[key]}));
 
@@ -117,8 +133,8 @@ interface marker {
 }
 
 interface gCityType {
-  city_id: number,
-  city_name: string,
+  city_id: number;
+  city_name: string;
   initial_zoom_level: string;
   initial_lat: string;
   initial_lng: string;
