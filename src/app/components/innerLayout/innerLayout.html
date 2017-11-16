@@ -6,11 +6,11 @@
         <h3>{{layout?.name}}</h3>
         <span innerHTML="{{layout?.description}}"></span>
       </div>
-      <div *ngSwitchCase ="'right'" class="col-10 push-1 col-sm-6">
+      <div *ngSwitchCase ="'right'" class="col-12 col-sm-6">
         <img src={{layout?.imgPath}} class="img-fluid" style="min-width: 100%;" />
       </div>
 
-      <div *ngSwitchCase ="'left'" class="col-10 push-1 col-sm-6">
+      <div *ngSwitchCase ="'left'" class="col-12 col-sm-6">
         <img src={{layout?.imgPath}} class="img-fluid" style="min-width: 100%;;" />
       </div>
       <div  *ngSwitchCase ="'left'" class="clearfix hidden-xs-down col-sm-4 offset-sm-1 pull-sm-1">
