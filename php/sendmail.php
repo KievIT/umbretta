@@ -1,5 +1,5 @@
 <?php
-header('Access-Control-Allow-Origin: *'); 
+header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
 
@@ -7,9 +7,9 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Autho
             $headers   = array();
             $headers[] = "MIME-Version: 1.0";
             $headers[] = "Content-type: text/html; charset=utf8";
-			$headers[] = "From: UMBRETTA.COM <info@umbretta.com>";
+			      $headers[] = "From: UMBRETTA.COM <info@umbretta.com>";
             $headers[] = "Reply-To: UmbrettaInformationService <info@umbretta.com>";
-            $headers[] = "Subject: {$Subj}";
+            // $headers[] = "Subject: {$Subj}";
             $headers[] = "X-Mailer: PHP/".phpversion();
 
             mail($To, $Subj, $Body, implode("\r\n", $headers));
@@ -22,9 +22,19 @@ $user = json_decode($post,true);
 
 if(isset($user["name"]) && isset($user["email"]) && $user["phone"])
 {
-	send_email($user["email"], $user["phone"], $user["name"]);
-	
-	echo "Email has been succesfully sent to ".$user["email"];
+  $message_to_user = '<p><b>Dear Friend!</b></p><br>Thank you for sent request to us.<br>We will answer your as soon as possible.<p><b>Best regards'
+                    . '<br>UMBRETTA TEAM</b></p>';
+  $message_to_admin = 'The visitor from website name<b> '.$user["name"].'</b><p><br><b>Asking next question: </b><br>"'.
+  $user["question"].'"</p><p><br><b>Contact</b> <br><b>City: </b>'.$user["city"].'<br><b>Phone: </b>'.$user["phone"].'<br>'.
+  '<b>Email:</b> '.$user["email"];
+  $subj_to_user = 'Welcome to UMBRETTA';
+  $subj_to_admin = 'New request from Umbretta website';
+  $email_admin ='o.talavas@gmail.com';
+
+  send_email($email_admin, $subj_to_admin, $message_to_admin);
+  send_email($user["email"], $subj_to_user, $message_to_user);
+  $res["show"] = true;
+	echo json_encode($res['show']);
 }
 else
 {

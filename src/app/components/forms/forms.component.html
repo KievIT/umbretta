@@ -1,22 +1,22 @@
-<div class="row no-gutters" style="margin-bottom: 20px;">
-  <div class="col-xs col-sm-8 push-sm-2">
+<div class="row no-gutters" [style.display]="show ? 'none' : 'block'" style="margin-bottom: 20px;">
+  <div class="col-10 push-1 col-sm-8 push-sm-2">
   <br>
   <h3 align=center>Request More Details</h3>
   <!-- <form novalidate (ngSubmit)="submit(f)" #f="ngForm"> -->
     <form novalidate>
-    <div class="form-group">
+    <div class="form-group row">
       <input
-           class="form-control"
+           class="form-control col-12"
            type="text"
            placeholder="Enter your name"
            [(ngModel)]="user.name"
            name="name"
            #name="ngModel"
            required>
-      <div [hidden]="name.valid || name.untouched" class="alert alert-danger">Name is required</div>
+      <div [hidden]="name.valid || name.untouched" class="alert alert-danger col-12">Name is required</div>
     </div>
-    <div class="form-group">
-      <input type="text" class="form-control" id="phone1"
+    <div class="form-group row">
+      <input type="text" class="form-control col-12" id="phone1"
             name="phone"
             aria-describedby="phoneHelp"
             placeholder="Enter phone number"
@@ -24,36 +24,41 @@
             #phone="ngModel"
             required pattern="[0-9]{11}">
       <small id="phoneHelp" class="form-text text-muted">We'll call you once your request processed</small>
-      <div [hidden]="phone.valid || phone.untouched" class="alert alert-danger">Enter 11 digits</div>
+      <div [hidden]="phone.valid || phone.untouched" class="alert alert-danger col-12">Enter 11 digits</div>
     </div>
-    <div class="form-group">
-      <input type="email" class="form-control" id="email"
+    <div class="form-group row">
+      <input type="email" class="form-control col-12" id="email"
             name="email"
             aria-describedby="emailHelp" placeholder="Enter email"
             [(ngModel)]="user.email"
             #email="ngModel"
             required email>
       <small id="emailHelp" class="form-text text-muted">We'll use this as alternative channel to reach you.</small>
-      <div [hidden]="email.valid || email.untouched" class="alert alert-danger">Email is incorrect</div>
+      <div [hidden]="email.valid || email.untouched" class="alert alert-danger col-12">Email is incorrect</div>
     </div>
-    <!-- <div class="form-group">
-      <select name="city" class="form-control" aria-describedby="cityHelp" ngModel>
+    <div class="form-group row">
+      <select name="city" class="form-control col-12" aria-describedby="cityHelp" [(ngModel)]="user.city">
         <option value = 'New York' selected>New York</option>
         <option  value = 'New Jersey' >New Jersey</option>
       </select>
       <small id="cityHelp" class="form-text text-muted">Please choose city we operate in</small>
     </div>
-    <div class="form-group">
+    <div class="form-group row">
       <input
-           class="form-control" aria-describedby="questionHelp"
+           class="form-control col-12" aria-describedby="questionHelp"
            type="text"
            placeholder="Type here if any ongoing questions"
            name="question"
-           ngModel>
+           [(ngModel)]="user.question">
       <small id="questionHelp" class="form-text text-muted">We'll provide exact information basing on given details</small>
-    </div> -->
-    <button [disabled]="name.invalid || email.invalid || phone.invalid"  class="btn btn-primary" (click)="submit(user)">Send Request</button>
-    <br>
+    </div>
+    <div class="form-group row justify-content-center">
+      <!-- <div class="col-4"></div> -->
+      <div class="col-5 pull-1 col-sm-3 offset-sm-2">
+        <button [disabled]="name.invalid || email.invalid || phone.invalid"  class="btn btn-primary" (click)="submit(user)">Send Request</button>
+      </div>
+    </div>
   </form>
+
 </div>
 </div>

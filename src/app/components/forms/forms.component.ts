@@ -9,22 +9,21 @@ import {User} from './user';
    providers: [postformService]
 })
 export class FormsComponent  {
-
+  show: boolean;
   buttonEnabled=true;
   user: User = new User();
 
   constructor(  private postformService: postformService) {
-    this.user.city ='';
-    this.user.question='';
     this.buttonEnabled;
+    this.show = false;
   }
 
   // onInit(){}
   submit(user: User) {
      console.log(this.user);
      this.postformService.postDataUser(this.user)
-     .subscribe(data => 
-       {console.log(data);});
+     .subscribe(data => this.show = data.json());
+     // {console.log(data.json());}
     // console.log(user);
     // this.buttonEnabled=false;  //disabling sending severall times in a session
   }
