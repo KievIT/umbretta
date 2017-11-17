@@ -1,5 +1,5 @@
 <div class="container-fluid">
-
+<div *ngIf="message" class="alert alert-success fixed-top">{{message.text}}</div>
   <div class="row  no-gutters firstLayout">
     <div class="col">
       <header></header>
@@ -12,6 +12,7 @@
     <ngx-gmaps></ngx-gmaps>
     <app-forms></app-forms>
     <contact></contact>
+    <!-- <alert [staticAlertClosed]="staticAlertClosed" [type]="type" [message] = "message"></alert> -->
 </div>
     <!-- <div class="row">
       <div class="col">

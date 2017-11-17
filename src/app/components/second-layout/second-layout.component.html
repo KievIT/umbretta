@@ -1,8 +1,8 @@
-<div class="row no-gutters secondLayout">
+<div class="row no-gutters secondLayout" id="Features">
   <div class="col">
 
     <div class="row">
-      <div class="col text-center LayoutText" id="Features" >
+      <div class="col text-center LayoutText" >
         <br>
         <h2>{{content?.name}}</h2>
       </div>
@@ -36,8 +36,8 @@
 
     </div>
 
-    <div class="row" style="min-height: 500px;">
-      <div class="col-sm-5 offset-sm-6 clearfix hidden-xs-down" id="Ads" >
+    <div class="row" style="min-height: 500px;" id="Ads">
+      <div class="col-sm-5 offset-sm-6 clearfix hidden-sm-down" >
         <br>
         <h2 class="text-center">Advertisement solution</h2>
           <div  class="row" *ngFor = "let adv of AdvertisementSolution">
@@ -51,7 +51,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col clearfix hidden-sm-up " id="Ads">
+  <div class="col clearfix hidden-sm-up ">
     <br>
       <h2 class="text-center ">Advertisement solution </h2><br>
       <div  class="row" *ngFor = "let adv of AdvertisementSolution">

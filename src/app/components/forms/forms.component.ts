@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import {postformService} from '../../services/postform.service';
 import {User} from './user';
+import {MessageService} from '../../services/message.service';
 
 @Component({
   selector: 'app-forms',
@@ -12,10 +13,13 @@ export class FormsComponent  {
   show: boolean;
   buttonEnabled=true;
   user: User = new User();
+  // @Output() message_form: string;
+  // @Output() type_form: string;
 
-  constructor(  private postformService: postformService) {
+  constructor(  private postformService: postformService, private messageService: MessageService) {
     this.buttonEnabled;
     this.show = false;
+
   }
 
   // onInit(){}
@@ -26,6 +30,22 @@ export class FormsComponent  {
      // {console.log(data.json());}
     // console.log(user);
     // this.buttonEnabled=false;  //disabling sending severall times in a session
+  }
+
+  sendMessage(message: string): void {
+       // отправляем сообщения ко всем кто подписался через observable subject
+       this.messageService.sendMessage(message);
+   }
+
+   clearMessage(): void {
+       // очищаем сообщения
+       this.messageService.clearMessage();
+   }
+
+  alert(){
+    this.sendMessage('its come from form');
+    setTimeout(() => this.clearMessage(), 4000);
+
   }
 
   // onSubmit({ value, valid }: { value: User, valid: boolean }) {
