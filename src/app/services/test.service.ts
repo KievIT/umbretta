@@ -1,6 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Injectable}      from '@angular/core';
+import { Http }           from '@angular/http';
+import { environment }    from '../../environments/environment';
+import                         'rxjs/add/operator/map';
+
 // let global = new Globals;
 @Injectable()
 export class TestService{
@@ -9,7 +11,7 @@ export class TestService{
     // console.log(GlobalVariables['GOOGLE_API_KEY']);
   }
   getTestData(){
-    return this.http.get('http://localhost/tmp/rest-api/api.php/testme/1,2')
+    return this.http.get(environment.crud_php_api+'/testme/1,2')
        .map(res => res.json());
   }
 }

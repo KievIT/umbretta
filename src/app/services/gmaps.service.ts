@@ -13,41 +13,24 @@ export class GmapsService{
   }
 
   getCities(){
+    // *************** taken from CRUD_PHP_API
+    // <script src="../lib/php_crud_api_transform.js"></script>
+    // http.get(url).map(res => php_crud_api_transform(res.json())).subscribe(res => this.posts = res.posts);
+    // ****************
     return this.http.get(environment.crud_php_api+'/umb_gmap_cities?filter=visible,eq,Y')
          .map(res => res.json());
   }
   getCitiesJSON(){
-    return this.http.get(environment.crud_php_api+'/umb_gmap_cities?filter=visible,eq,Y')
+    return this.http.get(environment.crud_php_api+'/umb_gmap_cities?filter=visible,eq,Y&transform=1')
          .map(res => res.json());
   }
-  // getCitiesJSON(){
-  //   // console.log('!!!');
-  //
-  //     return this.http.get(environment.crud_php_api+'/umb_gmap_cities?filter=visible,eq,Y')
-  //       .map(res => res.json());
-  //      //   //    console.log(res.json());
-  //      //   //   // console.log(res.json();
-  //      //   // })
-  //      //   .subscribe(data => {
-  //      //   return this.data;
-  //      // })
-  // }
 
-  // getCitiesJSON() : Observable {
-  //         return this.http.get(environment.crud_php_api+'/umb_gmap_cities?filter=visible,eq,Y')
-  //         .map(data=>{
-  //             return data;
-  //             // return userList;
-  //             // return usersList.map(function(user:any) {
-  //             //     return {name: user.userName, age: user.userAge};
-  //             //   });
-  //         });
-  //     }
 
-  // getCityMarkers(arg: string){
-  //   return this.http.get('http://localhost/tmp/rest-api/api.php/umb_content/'+arg)
-  //      .map(res => res.json());
-  // }
+  getCityMarkers(city: string){
+    //...umb_gmap_markers/?filter[]=status_cd,eq,A&filter[]=city,eq,New York&transform=1&satisfy=all
+    return this.http.get(environment.crud_php_api+'/umb_gmap_markers/?filter[]=status_cd,eq,A&filter[]=city,eq,'+city+'&satisfy=all&transform=1')
+       .map(res => res.json());
+  }
 
 }
 

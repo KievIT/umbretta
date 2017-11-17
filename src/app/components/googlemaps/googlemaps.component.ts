@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component    } from '@angular/core';
 import { GmapsService } from '../../services/gmaps.service';
 @Component({
   selector: 'ngx-gmaps',
@@ -14,46 +14,43 @@ import { GmapsService } from '../../services/gmaps.service';
 //  Options are: 'roadmap' | 'hybrid' | 'satellite' | 'terrain'
 export class GmapsComponent {
   // google maps zoom level
-  zoom: number = 15;
+   zoom: number = 15;
   // initial center position for the map
-  lat: number = 40.705869;
-  lng: number =  -74.009936;
+   lat: number = 40.705869;
+   lng: number =  -74.009936;
 
-  gcity: gCityType  ; //= [0,'','','','','']
-  //gcity["city_name"] = "NY!";
-//  gcity = {1,2,3,4,5,6};
-  // console.log(gcity);
-  markers: marker[] = [
-        {
-          lat: 51.673858,
-          lng: 7.815982,
-          label: 'A',
-          info: 'Manhattan, Address Line 2',
-          draggable: false
-        },
-        {
-          lat: 51.373858,
-          lng: 7.215982,
-          label: 'B',
-          info: 'New York, Address Line 2',
-          draggable: false
-        },
-        {
-          lat: 51.723858,
-          lng: 7.895982,
-          label: 'C',
-          info: 'New Jersey, Address Line 2',
-          draggable: true
-        }
-      ];
-  // gcity =
-    // [1, "New York", 15, "40.705869", "-74.009936", "Y"],
-    // [2, "Boston", 15, "42.358852", "-71.056855", "Y"],
-    // [3, "Chicago", 15, "41.853854", "-87.633130", "Y"],
-    // [4, "Los Angeles", 15, "34.049750", "-118.337620", "Y"],
-    // [5, "San Francisco", 15, "37.771725", "-122.419750", "Y"]
-  //   ;
- private obj: any;
+  gcity: gCityType;
+  activeCity:gCityType ;
+  defaultCityID: 0;
+  CityMarkers: CityMarkerType;
+
+  // markers: marker[] = [
+  //       {
+  //         lat: 40.705869,
+  //         lng: 40.705869,
+  //         label: 'A',
+  //         info: 'Manhattan, Address Line 2',
+  //         initial_zoom_level: 15,
+  //         draggable: false
+  //       },
+  //       {
+  //         lat: 51.373858,
+  //         lng: 7.215982,
+  //         label: 'B',
+  //         initial_zoom_level: 15,
+  //         info: 'New York, Address Line 2',
+  //         draggable: false
+  //       },
+  //       {
+  //         lat: 51.723858,
+  //         lng: 7.895982,
+  //         label: 'C',
+  //         initial_zoom_level: 15,
+  //         info: 'New Jersey, Address Line 2',
+  //         draggable: false
+  //       }
+  //     ];
+
  // private arr: Array[];
    constructor(private gmapsService: GmapsService)
      {
@@ -61,61 +58,43 @@ export class GmapsComponent {
        this.lat;
        this.lng;
        this.zoom;
-       this.markers;
-       this.gcity;
-
          this.gmapsService.getCitiesJSON()
-          //  .subscribe(gCity => this.gcity = gCity);
-           // .subscribe(data => console.log(data));
-             .subscribe(data => {
-              // console.log(data.umb_gmap_cities.records))
-              let header_obj = data.umb_gmap_cities.columns;
-              let records_obj = data.umb_gmap_cities.records;
-              console.log(records_obj);
-              for (let i = 0; i < records_obj.length; i++) {
-              //  this.gcity = records_obj[i] as gCityType ;
-              // this.gcity.push(records_obj[i]);
-              //  console.log(this.gcity);
+            //  .subscribe(data => this.gcity = data);
+             // .subscribe(data => console.log(data));
+               .subscribe(data => {
+                  this.gcity = data.umb_gmap_cities;
+                  this.activeCity = this.gcity[0];
+                // console.log(data.umb_gmap_cities.records))
+                  console.log(this.gcity[0]);
+                  // this.lat = this.gcity[0].initial_lat;
+                  // this.lng = this.gcity[0].initial_lng;
+                  // this.zoom = this.gcity[0].initial_zoom_level;
+              });
+              //this.activeCity;
 
-
-
-                //   ******************
-                //        this.markers.push({'lat':data.geometry.location.lat,'lng':data.geometry.location.lng})
-                //   ****************
-                //  myObject["someString"] = "yeah!"
-                //  *****************
-
-
-                  // records_obj[i] => records_obj[i].json() ;
-                //  console.log(records_obj[i].map(res => res.json()));
-                //  this.gCity.push(records_obj[i]);
-                      //const data = new WikiData(jsonData[1][i], jsonData[2][i]);
-                  // this.wikiData.push(data);
-             // }
-             // console.log(this.gcity);
-              // for (let value in data.umb_gmap_cities.records){
-              //   console.log(value);
-              // }
-
-              // console.log(header_obj);
-              //  for(let value in header_obj[1]){
-              //     console.log(value);
-                }
-            //  console.log(obj[1][1]); //name
-              // console.log(Object.keys(obj).map((key)=>{ return obj[key]}));
-
-            });
-
+          //  this.markers;
+            this.gcity;
        //   console.log(this.gcity);
      }
 
-   // generateArray(obj){
-   //    return Object.keys(obj).map((key)=>{ return obj[key]});
-   // }
+  // functionFilter(arg: gCityType[], parameter: string) {
+  //   private num: number;
+  //    for(num=0;num<=arg.length();num++){
+  //       console.log(arg[num]);
+  //    }
+  // }
+  // getMarkers(private city: string){
+  //
+  // }
 
-   onClick(lat: number, lng: number){
-       this.lat = lat;
-       this.lng = lng;
+
+   onClick(city: string){
+     console.log(city);
+     this.gmapsService.getCityMarkers(city)
+      .subscribe(data => {this.CityMarkers = data; console.log(this.CityMarkers);});
+
+       // this.lat = lat;
+       // this.lng = lng;
    }
 
    clickedMarker(label: string, index: number) {
@@ -128,10 +107,22 @@ interface marker {
 	lat: number;
 	lng: number;
 	label?: string;
+  initial_zoom_level: string;
   info?:string;
 	draggable: boolean;
 }
 
+interface CityMarkerType {
+  marker_id: number;
+	lat: number;
+	lng: number;
+	label?: string;
+  info?:string;
+	draggable: boolean;
+  city: string;
+  status_cd: string;
+  create_date:string;
+}
 interface gCityType {
   city_id: number;
   city_name: string;
@@ -139,4 +130,5 @@ interface gCityType {
   initial_lat: string;
   initial_lng: string;
   visible: string;
+  city_short_name: string;
 }

@@ -1,14 +1,6 @@
 <?php
 //var_dump($_SERVER['REQUEST_METHOD'],$_SERVER['PATH_INFO']); die();
-//$api = new PHP_CRUD_API(array(
-//     	'dbengine'=>'MySQL',
-// 	'hostname'=>'localhost',
-// 	'username'=>'root',
-// 	'password'=>'',
-// 	'database'=>'test',
-// 	'charset'=>'utf8'
-//));
-//$api->executeCommand();
+
 
 interface DatabaseInterface {
 	public function getSql($name);
@@ -100,9 +92,9 @@ class MySQL implements DatabaseInterface {
 					k2."REFERENCED_TABLE_NAME" COLLATE \'utf8_bin\' IN ?',
 			'reflect_columns'=> 'SELECT
 					"COLUMN_NAME", "COLUMN_DEFAULT", "IS_NULLABLE", "DATA_TYPE", "CHARACTER_MAXIMUM_LENGTH"
-				FROM 
-					"INFORMATION_SCHEMA"."COLUMNS" 
-				WHERE 
+				FROM
+					"INFORMATION_SCHEMA"."COLUMNS"
+				WHERE
 					"TABLE_NAME" = ? AND
 					"TABLE_SCHEMA" = ?
 				ORDER BY
@@ -341,8 +333,8 @@ class PostgreSQL implements DatabaseInterface {
 					cub2."table_name" in ?',
 			'reflect_columns'=> 'select
 					"column_name", "column_default", "is_nullable", "data_type", "character_maximum_length"
-				from 
-					"information_schema"."columns" 
+				from
+					"information_schema"."columns"
 				where
 					"table_name" = ? and
 					"table_schema" = \'public\' and
@@ -592,9 +584,9 @@ class SQLServer implements DatabaseInterface {
 					cub2."TABLE_NAME" IN ?',
 			'reflect_columns'=> 'SELECT
 					"COLUMN_NAME", "COLUMN_DEFAULT", "IS_NULLABLE", "DATA_TYPE", "CHARACTER_MAXIMUM_LENGTH"
-				FROM 
-					"INFORMATION_SCHEMA"."COLUMNS" 
-				WHERE 
+				FROM
+					"INFORMATION_SCHEMA"."COLUMNS"
+				WHERE
 					"TABLE_NAME" LIKE ? AND
 					"TABLE_CATALOG" = ?
 				ORDER BY
@@ -839,12 +831,12 @@ class SQLServer implements DatabaseInterface {
 		$f = function($f,$a) use ($t) {
 			$c = null;
 			if ($t($a)=='null') {
-				$c = null; 
+				$c = null;
 			} else if ($t($a)=='boolean') {
 				$b = substr(strtolower($a->textContent),0,1);
 				$c = in_array($b,array('1','t'));
 			} else if ($t($a)=='number') {
-				$c = $a->textContent+0; 
+				$c = $a->textContent+0;
 			} else if ($t($a)=='string') {
 				$c = $a->textContent;
 			} else if ($t($a)=='object') {
@@ -933,9 +925,9 @@ class SQLite implements DatabaseInterface {
 					k2."table" IN ?',
 			'reflect_columns'=> 'SELECT
 					"name", "dflt_value", case when "notnull"==1 then \'no\' else \'yes\' end as "nullable", "type", 2147483647
-				FROM 
+				FROM
 					"sys/columns"
-				WHERE 
+				WHERE
 					"self"=?
 				ORDER BY
 					"cid"'
@@ -2273,7 +2265,7 @@ class PHP_CRUD_API {
 		foreach ($tables as $t=>$table)	{
 			$table_list = array($table['name']);
 			$table_fields = $this->findFields($table_list,false,false,false,$database);
-			
+
 			// extensions
 			$result = $this->db->query($this->db->getSql('reflect_belongs_to'),array($table_list[0],$table_names,$database,$database));
 			while ($row = $this->db->fetchRow($result)) {
@@ -2640,11 +2632,12 @@ class PHP_CRUD_API {
 			echo '}';
 	}
 
+
 	protected function allowOrigin($origin,$allowOrigins) {
 		if (isset($_SERVER['REQUEST_METHOD'])) {
 			header('Access-Control-Allow-Credentials: true');
 			foreach (explode(',',$allowOrigins) as $o) {
-				if (preg_match('/^'.str_replace('\*','.*',preg_quote(strtolower(trim($o)))).'$/',$origin)) { 
+				if (preg_match('/^'.str_replace('\*','.*',preg_quote(strtolower(trim($o)))).'$/',$origin)) {
 					header('Access-Control-Allow-Origin: '.$origin);
 					break;
 				}
@@ -2672,6 +2665,7 @@ class PHP_CRUD_API {
 			}
 			if ($output!==false) {
 				$this->startOutput();
+
 				echo json_encode($output);
 			}
 			if ($parameters['after']) {
@@ -2719,13 +2713,14 @@ class PHP_CRUD_API {
 		// 'socket'=>null,
 		'charset'=>'utf8',
 	// callbacks with their default behavior
-		'table_authorizer'=>function($cmd,$db,$tab) 
-                    { 
+		'table_authorizer'=>function($cmd,$db,$tab)
+                    {
                         switch ($tab)
                         {
                             //list of authorized tables for selection
                             case "umb_gmap_cities";
                             case "umb_content";
+														case "umb_gmap_markers";
                                 return true;
                             default: return false;
                         }
@@ -2735,7 +2730,11 @@ class PHP_CRUD_API {
 		// 'tenancy_function'=>function($cmd,$db,$tab,$col) { return null; },
 		// 'input_sanitizer'=>function($cmd,$db,$tab,$col,$typ,$val) { return $val; },
 		// 'input_validator'=>function($cmd,$db,$tab,$col,$typ,$val,$ctx) { return true; },
-		// 'before'=>function(&$cmd,&$db,&$tab,&$id,&$in) { /* adjust array $in */ },
+		 'before'=>function(&$cmd,&$db,&$tab,&$id,&$in) { /* adjust array $in */
+			 	if ($cmd == 'delete') {
+					$cmd = 'read';
+				}
+			 },
 		// 'after'=>function($cmd,$db,$tab,$id,$in,$out) { /* do something */ },
 	// configurable options
 		'allow_origin'=>'*',

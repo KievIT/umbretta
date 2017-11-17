@@ -11,20 +11,8 @@
         </div>
       </div>
       <div class="row no-gutters align-items-end" style="height: 68%;" >
-        <div class="col clearfix hidden-sm-down btn-cities text-center align-self-end" (click)="onClick(40.705869, -74.009936)">
-          <h6>New York</h6>
-        </div>
-        <div class="col clearfix hidden-sm-down btn-cities text-center align-self-end" (click)="onClick(42.358852, -71.056855)">
-          <h6>Boston</h6>
-        </div>
-        <div class="col clearfix hidden-sm-down btn-cities text-center align-self-end" (click)="onClick(41.853854, -87.633130)">
-          <h6>Chicago</h6>
-        </div>
-        <div class="col clearfix hidden-sm-down btn-cities text-center align-self-end" (click)="onClick(34.049750, -118.33762)">
-          <h6>Los Angeles</h6>
-        </div>
-        <div class="col clearfix hidden-sm-down btn-cities text-center align-self-end" (click)="onClick(37.771725, -122.419750)">
-          <h6>San Francisco</h6>
+        <div *ngFor="let city of gcity" class="col clearfix hidden-sm-down btn-cities text-center align-self-end" (click)="onClick(city.city_name)">
+          <h6>{{city.city_name}}</h6>
         </div>
 
         <div class="col clearfix hidden-sm-up btn-cities text-center align-self-end" (click)="onClick(40.705869, -74.009936)">
@@ -42,8 +30,6 @@
         <div class="col clearfix hidden-sm-up btn-cities text-center align-self-end" (click)="onClick(37.771725, -122.419750)">
           <h6>San Francisco</h6>
         </div>
-
-
       </div>
     </div>
 
@@ -51,8 +37,9 @@
 <div class="row no-gutters">
   <div class="col">
     <!-- [scrollwheel]=false  disable auto zoom on scrolling down-->
+      <!-- <agm-map [latitude]="activeCity?.initial_lat" [longitude]="activeCity?.initial_lng" [zoom]="activeCity?.initial_zoom_level" [mapTypeId]="'roadmap'" [scrollwheel]=false> -->
       <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="'roadmap'" [scrollwheel]=false>
-        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        <!-- <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker> -->
         <agm-marker *ngFor="let m of markers; let i = index"
             (markerClick)="clickedMarker(m.label, i)"
             [latitude]="m.lat"
