@@ -22,9 +22,9 @@
             placeholder="Enter phone number"
             [(ngModel)]="user.phone"
             #phone="ngModel"
-            required pattern="[0-9]{11}">
+            required pattern="[0-9]{8,15}">
       <small id="phoneHelp" class="form-text text-muted">We'll call you once your request processed</small>
-      <div [hidden]="phone.valid || phone.untouched" class="alert alert-danger col-12">Enter 11 digits</div>
+      <div [hidden]="phone.valid || phone.untouched" class="alert alert-danger col-12">Please enter digits only</div>
     </div>
     <div class="form-group row">
       <input type="email" class="form-control col-12" id="email"
@@ -34,7 +34,7 @@
             #email="ngModel"
             required email>
       <small id="emailHelp" class="form-text text-muted">We'll use this as alternative channel to reach you.</small>
-      <div [hidden]="email.valid || email.untouched" class="alert alert-danger col-12">Email is incorrect</div>
+      <div [hidden]="email.valid || email.untouched" class="alert alert-danger col-12">Please type valid email format</div>
     </div>
     <!-- <div class="form-group row">
       <select name="city" class="form-control col-12" aria-describedby="cityHelp" [(ngModel)]="user.city">
@@ -59,6 +59,6 @@
       </div>
     </div>
   </form>
-<button   class="btn btn-primary" (click)="alert()">Show alert</button>
+<!-- <button   class="btn btn-primary" (click)="alert()">Show alert</button> -->
 </div>
 </div>

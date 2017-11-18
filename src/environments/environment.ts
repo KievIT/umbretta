@@ -5,10 +5,8 @@
 
 export const environment = {
   production:       false,
-  // crud_php_api:     'http://localhost/umbretta/php/rest-api/api.php',
-  // sendmail:         'http://localhost/umbretta/php/sendmail.php',
-  crud_php_api:     'http://localhost/umbretta/php/rest-api/api.php',
-  sendmail:         'http://localhost/umbretta/php/sendmail.php',
+  crud_php_api:     'http://localhost/tmp/umbretta/src/php/rest-api/api.php',
+  sendmail:         'http://localhost/tmp/umbretta/src/php/sendmail.php',
   google_api_key:   'AIzaSyCESyzus6Bs7X-5_-38X0bkqJjD9ATRJVI',
   google_api_lang:  'EN',
 };

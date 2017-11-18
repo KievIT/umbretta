@@ -33,19 +33,18 @@ export class FormsComponent  {
   }
 
   sendMessage(message: string): void {
-       // отправляем сообщения ко всем кто подписался через observable subject
+       // sending message to all who have subscribed via observable subject
        this.messageService.sendMessage(message);
    }
 
    clearMessage(): void {
-       // очищаем сообщения
+       // clear messages
        this.messageService.clearMessage();
    }
 
   alert(){
     this.sendMessage('its come from form');
     setTimeout(() => this.clearMessage(), 4000);
-
   }
 
   // onSubmit({ value, valid }: { value: User, valid: boolean }) {

@@ -24,32 +24,14 @@ export class GmapsComponent {
   defaultCityID: 0;
   CityMarkers: CityMarkerType;
 
-  // markers: marker[] = [
-  //       {
+  // markers: marker[] = [{
   //         lat: 40.705869,
   //         lng: 40.705869,
   //         label: 'A',
   //         info: 'Manhattan, Address Line 2',
   //         initial_zoom_level: 15,
   //         draggable: false
-  //       },
-  //       {
-  //         lat: 51.373858,
-  //         lng: 7.215982,
-  //         label: 'B',
-  //         initial_zoom_level: 15,
-  //         info: 'New York, Address Line 2',
-  //         draggable: false
-  //       },
-  //       {
-  //         lat: 51.723858,
-  //         lng: 7.895982,
-  //         label: 'C',
-  //         initial_zoom_level: 15,
-  //         info: 'New Jersey, Address Line 2',
-  //         draggable: false
-  //       }
-  //     ];
+  //       } ];
 
  // private arr: Array[];
    constructor(private gmapsService: GmapsService)
@@ -66,10 +48,7 @@ export class GmapsComponent {
                   this.activeCity = this.gcity[0];
                 // console.log(data.umb_gmap_cities.records))
                   console.log(this.gcity[0]);
-                  // this.lat = this.gcity[0].initial_lat;
-                  // this.lng = this.gcity[0].initial_lng;
-                  // this.zoom = this.gcity[0].initial_zoom_level;
-              });
+          });
               //this.activeCity;
 
           //  this.markers;
@@ -77,7 +56,7 @@ export class GmapsComponent {
        //   console.log(this.gcity);
      }
 
-  // functionFilter(arg: gCityType[], parameter: string) {
+  // functionFilter(arg: string) {
   //   private num: number;
   //    for(num=0;num<=arg.length();num++){
   //       console.log(arg[num]);
@@ -88,13 +67,13 @@ export class GmapsComponent {
   // }
 
 
-   onClick(city: string){
+   onClick(city: string, i: number){
      console.log(city);
      this.gmapsService.getCityMarkers(city)
-      .subscribe(data => {this.CityMarkers = data; console.log(this.CityMarkers);});
+      .subscribe(data => {this.CityMarkers = data.umb_gmap_markers; console.log(this.CityMarkers);});
 
-       // this.lat = lat;
-       // this.lng = lng;
+        this.lat = this.gcity[i].initial_lat;
+        this.lng = this.gcity[i].initial_lng;
    }
 
    clickedMarker(label: string, index: number) {
