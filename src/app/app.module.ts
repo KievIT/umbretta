@@ -1,11 +1,12 @@
-import { BrowserModule }  from '@angular/platform-browser';
-import { APP_BASE_HREF }  from '@angular/common';
-import { NgModule}       from '@angular/core';
-import { HttpModule }     from '@angular/http';
-import { AgmCoreModule }  from '@agm/core';
-import { AppComponent }   from './app.component';
-import { FormsModule }    from '@angular/forms';
-import { NgbModule }      from '@ng-bootstrap/ng-bootstrap';
+import { BrowserModule }          from '@angular/platform-browser';
+import { APP_BASE_HREF }          from '@angular/common';
+import { NgModule}                from '@angular/core';
+import { HttpModule }             from '@angular/http';
+import { AgmCoreModule }          from '@agm/core';
+import { GoogleMapsAPIWrapper }   from '@agm/core/services/google-maps-api-wrapper';
+import { AppComponent }           from './app.component';
+import { FormsModule }            from '@angular/forms';
+import { NgbModule }              from '@ng-bootstrap/ng-bootstrap';
 
 //First Page Module seems like should be routed or somehow called.
 //FirstPageComponent it shows that it being running using Console.Log but display nothing
@@ -56,7 +57,7 @@ import {MessageService} from './services/message.service';
     FirstPageModule
 
   ],
-  providers: [MessageService],
+  providers: [MessageService, GoogleMapsAPIWrapper],
   bootstrap: [AppComponent]
 })
 export class AppModule {
