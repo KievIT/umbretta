@@ -1,5 +1,5 @@
 <div class="container-fluid">
-<div *ngIf="message" class="alert alert-success fixed-top">{{message.text}}</div>
+<ngb-alert *ngIf="message" class="alert fixed-top" [type]="message.type" (close)="message = false">{{message.text}}</ngb-alert>
   <div class="row  no-gutters firstLayout">
     <div class="col">
       <header></header>

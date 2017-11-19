@@ -103,6 +103,8 @@ export class GmapsComponent {
       .subscribe(data =>
           {
              this.CityMarkers = data.umb_gmap_markers;
+             this.lat = data.umb_gmap_markers['lat'];
+             this.lng = data.umb_gmap_markers['lng'];
              console.log(this.CityMarkers);
              // this._markers.set(              {
              //                   latitude: "40.639294"
