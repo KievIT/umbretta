@@ -24,6 +24,7 @@ export class GmapsComponent {
    lat: number = 40.705869;
    lng: number =  -74.009936;
    activeCity: gCityType;
+   a: any  = {lat:0, lng:0};
    gcity: gCityType;
    defaultCityID: 0;
    // CityMarkers: CityMarkerType;
@@ -75,7 +76,7 @@ export class GmapsComponent {
 
   addMarker(marker: AgmMarker) {
     const markerPromise = this._mapsWrapper.createMarker({
-      position: {lat: marker.latitude, lng: marker.longitude},
+      position: {lat:  Number(marker.latitude), lng:  Number(marker.longitude)},
       label: marker.label,
       draggable: marker.draggable,
       icon: marker.iconUrl,
@@ -95,18 +96,24 @@ export class GmapsComponent {
      this.lat = Number(city.initial_lat);
      this.lng = Number(city.initial_lng);
      this.gmapsService.getCityMarkers(city.city_name)
+
+      //   .map(data => this.lat = data.umb_gmap_markers['lat'])
       .subscribe(data =>
           {
              this.CityMarkers = data.umb_gmap_markers;
-             this.lat = data.umb_gmap_markers['lat'];
-             this.lng = data.umb_gmap_markers['lng'];
+          //   this.lat = data.umb_gmap_markers['lat'];
+         //    this.lng = data.umb_gmap_markers['lng'];
              console.log(this.CityMarkers);
              // this._markers.set(              {
              //                   latitude: "40.639294"
              //                 , longitude: "-73.907510"
              //                 , label: null
              //               });
-             //this.addMarker(this.CityMarkers[0]);
+            this.CityMarkers[0].lat = Number(data.umb_gmap_markers[0]['latitude']);
+            this.CityMarkers[0].lng = Number(data.umb_gmap_markers[0]['longitude']);
+            this.a.lat = this.CityMarkers[0].lat;
+            this.a.lng = this.CityMarkers[0].lng;
+            this.addMarker(this.CityMarkers[0]);
           });
    }
 
