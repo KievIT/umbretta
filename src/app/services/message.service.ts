@@ -8,6 +8,7 @@ export class MessageService {
 
     sendMessage(message: string, type: string) {
         this.subject.next({ text: message, type: type });
+        setTimeout(() => this.clearMessage(), 6000);
         // console.log(this.subject.next(type));
     }
 

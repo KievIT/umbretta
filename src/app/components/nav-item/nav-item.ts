@@ -12,9 +12,10 @@ export class navItemContent {
     this.ContentArray = [
      {link:"Features", href:"#Features"}
     ,{link:"Ads", href:"#Ads"}
+    ,{link:"Opportunities", href:"#Opportunities"}
     ,{link:"Map", href:"#Map"}
     ,{link:"Request", href:"#Request"}
-    // ,{link:"Charity", href:"#Charity"}
+    // ,
     ,{link:"Contact us", href:"#Contact"} ];
     }
 }

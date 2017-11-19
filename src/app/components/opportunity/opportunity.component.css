@@ -1,0 +1,7 @@
+.opportunity {
+background-image: url(/assets/opportunity.jpg);
+background-repeat: no-repeat;
+/*background-attachment: fixed;*/
+background-position: 50% 50%;
+background-size: cover;
+}

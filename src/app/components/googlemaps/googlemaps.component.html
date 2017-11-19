@@ -39,14 +39,15 @@
     <!-- [scrollwheel]=false  disable auto zoom on scrolling down-->
       <!-- <agm-map [latitude]="activeCity?.initial_lat" [longitude]="activeCity?.initial_lng" [zoom]="activeCity?.initial_zoom_level" [mapTypeId]="'roadmap'" [scrollwheel]=false> -->
       <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="'roadmap'" [scrollwheel]=false>
-        <agm-marker>
-        <!-- <agm-marker [latitude]="activeCity.initial_lat" [longitude]="activeCity.initial_lng"></agm-marker> -->
-         <!-- <agm-marker *ngFor="let m of CityMarkers; let i = index"
-            (markerClick)="clickedMarker(m.label, i)"
-            [latitude]="m.lat"
-            [longitude]="m.lng"
+       <!--- <agm-marker>-->
+      <!--   <agm-marker [latitude]="a.lat" [longitude]="a.lng"></agm-marker>-->
+          <agm-marker *ngFor="let m of CityMarkers; index as j"
+            (markerClick)="clickedMarker(m.label, j)"
+            [latitude]="m.latitude"
+            [longitude]="m.longitude"
             [label]="m.label"
-            [markerDraggable]="m.draggable">
+            [markerDraggable]="m.draggable"
+           >
             <agm-info-window [disableAutoPan]="true">
              {{m.info}}
           </agm-info-window> -->

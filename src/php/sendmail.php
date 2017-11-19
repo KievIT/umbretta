@@ -37,7 +37,7 @@ if(!isset($user["city"]))
 if(isset($user["name"]) && isset($user["email"]) && $user["phone"])
 {
 
-  $message_to_user = '<p><b>Dear Friend!</b></p><br>Thank you for sent request to us.<br>We will answer your as soon as possible.<p><b>Best regards'
+  $message_to_user = '<p><b>Dear Friend!</b></p><br>Thank you for sent request to us.<br>We will answer to you as soon as possible.<p><b>Best regards'
                     . '<br>UMBRETTA TEAM</b></p>';
   $message_to_admin = 'The visitor from website name<b> '.$user["name"].'</b><p><br><b>Asking next question: </b><br>"'.
   $user["question"].'"</p><p><br><b>Contact</b> <br><b>City: </b>'.$user["city"].'<br><b>Phone: </b>'.$user["phone"].'<br>'.
@@ -49,7 +49,7 @@ if(isset($user["name"]) && isset($user["email"]) && $user["phone"])
   if(send_email($email_admin, $subj_to_admin, $message_to_admin)&&send_email($user["email"], $subj_to_user, $message_to_user)){
     $res['show'] = true;
     $res['type'] = "success";
-    $res['message'] = "Your question was sent. Thank you!";
+    $res['message'] = "Your request was sent. Thank you!";
   	echo json_encode($res);
   }else{
     $res['show'] = false;
