@@ -13,6 +13,7 @@ export class FormsComponent  {
   show: boolean;
   buttonEnabled=true;
   user: User = new User();
+
   // @Output() message_form: string;
   // @Output() type_form: string;
 
@@ -25,16 +26,21 @@ export class FormsComponent  {
   // onInit(){}
   submit(user: User) {
      console.log(this.user);
+     this.messageService.sendMessage('Email sending...', 'warning');
      this.postformService.postDataUser(this.user)
-     .subscribe(data => this.show = data.json());
+     .subscribe(data => {
+       this.alert(data.json().message, data.json().type);
+       this.show = data.json().show;
+     });
+
      // {console.log(data.json());}
     // console.log(user);
     // this.buttonEnabled=false;  //disabling sending severall times in a session
   }
 
-  sendMessage(message: string): void {
+  sendMessage(message: string, type: string): void {
        // sending message to all who have subscribed via observable subject
-       this.messageService.sendMessage(message);
+       this.messageService.sendMessage(message, type);
    }
 
    clearMessage(): void {
@@ -42,8 +48,10 @@ export class FormsComponent  {
        this.messageService.clearMessage();
    }
 
-  alert(){
-    this.sendMessage('its come from form');
+  alert(message: string, type: string){
+    // type = 'danger';
+    // message = 'testing';
+    this.sendMessage(message, type);
     setTimeout(() => this.clearMessage(), 4000);
   }
 
