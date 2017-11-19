@@ -29,7 +29,7 @@ export class FormsComponent  {
      this.messageService.sendMessage('Email sending...', 'warning');
      this.postformService.postDataUser(this.user)
      .subscribe(data => {
-       this.alert(data.json().message, data.json().type);
+       this.messageService.sendMessage(data.json().message, data.json().type);
        this.show = data.json().show;
      });
 
@@ -48,12 +48,12 @@ export class FormsComponent  {
        this.messageService.clearMessage();
    }
 
-  alert(message: string, type: string){
+  // alert(message: string, type: string){
     // type = 'danger';
     // message = 'testing';
-    this.sendMessage(message, type);
-    setTimeout(() => this.clearMessage(), 4000);
-  }
+  //   this.sendMessage(message, type);
+  //   // setTimeout(() => this.clearMessage(), 4000);
+  // }
 
   // onSubmit({ value, valid }: { value: User, valid: boolean }) {
   //   this.postformService.postData(value)

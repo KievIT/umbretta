@@ -23,6 +23,7 @@ import { secondLayout }       from './components/second-layout/second-layout.com
 import { FormsComponent }     from './components/forms/forms.component';
 import { ContactComponent }   from './components/contact/contact.component';
 import {MessageService} from './services/message.service';
+import { OpportunityComponent } from './components/opportunity/opportunity.component';
 
 //let global = new Globals; //global parameters initialization
 //console.log(GlobalVariables['PHP_API_PATH']);
@@ -42,6 +43,7 @@ import {MessageService} from './services/message.service';
       secondLayout,
       FormsComponent,
       ContactComponent,
+      OpportunityComponent,
   ],
   //External Angular and Other Vendors Modules
   imports: [

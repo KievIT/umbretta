@@ -12,6 +12,24 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/*@include media-breakpoint-up(sm) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 28px;
+  }
+}*/
+
 body {
   margin: 0;
 }
