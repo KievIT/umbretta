@@ -28,13 +28,9 @@ export class GmapsComponent {
    gcity: gCityType;
    defaultCityID: 0;
    // CityMarkers: CityMarkerType;
-<<<<<<< HEAD
-    CityMarkers: CityMarkerType[];
-   mymarker: AgmMarker;
-=======
     CityMarkers: AgmMarker;
  //  mymarker: AgmMarker;
->>>>>>> origin/master
+
   // console.log(mymarker);
    // let id = mymarker.longtitude.push('40.705869');
    // let id = mymarker.longtitude.push('-74.009936');
@@ -112,14 +108,6 @@ export class GmapsComponent {
          })
          .subscribe(data =>
           {
-<<<<<<< HEAD
-             this.CityMarkers = data.umb_gmap_markers;
-            // this.CityMarkers = JSON.stringify(CityMarkers);
-=======
-             this.CityMarkers = data;
-          //   this.lat = data.umb_gmap_markers['lat'];
-         //    this.lng = data.umb_gmap_markers['lng'];
->>>>>>> origin/master
              console.log(this.CityMarkers);
              let i = 0;
              for (let entry of this.CityMarkers) {
