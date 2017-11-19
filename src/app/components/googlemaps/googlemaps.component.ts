@@ -100,27 +100,26 @@ export class GmapsComponent {
     this._markers.set(marker, markerPromise);
   }
 
-   onClick(i: number,city: gCityType){
-     console.log('City cliked:'+city.city_name);
-     console.log(city);
-      this.lat = city.initial_lat;
-      this.lng = city.initial_lng;
-     this.gmapsService.getCityMarkers(city.city_name)
-      .subscribe(data =>
-          {
-             this.CityMarkers = data.umb_gmap_markers;
-             console.log(this.CityMarkers);
-             // this._markers.set(              {
-             //                   latitude: "40.639294"
-             //                 , longitude: "-73.907510"
-             //                 , label: null
-             //               });
-            this.addMarker(this.CityMarkers[0]);
-          });
-        //this.addMarker(this.CityMarkers[0]);
-        // this.lat = this.gcity[i].initial_lat;
-        // this.lng = this.gcity[i].initial_lng;
-   }
+    onClick(i: number,city: gCityType){
+        console.log('City cliked:'+city.city_name);
+        console.log(city);
+        this.lat = Number(city.initial_lat);
+        this.lng = Number(city.initial_lng);
+        this.gmapsService.getCityMarkers(city.city_name)
+            .subscribe(data =>
+            {
+                this.CityMarkers = data.umb_gmap_markers;
+                this.lat = data.umb_gmap_markers['lat'];
+                this.lng = data.umb_gmap_markers['lng'];
+                console.log(this.CityMarkers);
+                // this._markers.set(              {
+                //                   latitude: "40.639294"
+                //                 , longitude: "-73.907510"
+                //                 , label: null
+                //               });
+                //this.addMarker(this.CityMarkers[0]);
+            });
+    }
 
    clickedMarker(label: string, index: number) {
        console.log(`clicked the marker: ${label || index}`)
