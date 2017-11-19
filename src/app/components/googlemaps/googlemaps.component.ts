@@ -26,7 +26,8 @@ export class GmapsComponent {
    activeCity: gCityType;
    gcity: gCityType;
    defaultCityID: 0;
-   CityMarkers: CityMarkerType;
+   // CityMarkers: CityMarkerType;
+    CityMarkers: AgmMarker;
    mymarker: AgmMarker;
   // console.log(mymarker);
    // let id = mymarker.longtitude.push('40.705869');
@@ -48,20 +49,21 @@ export class GmapsComponent {
        this.lat;
        this.lng;
        this.zoom;
-         this.gmapsService.getCitiesJSON()
-            //  .subscribe(data => this.gcity = data);
+       this.activeCity;
+       this._markers;
+       this.gmapsService.getCitiesJSON()
+              .subscribe(data => this.gcity = data.umb_gmap_cities);
              // .subscribe(data => console.log(data));
-               .subscribe(data => {
-                  this.gcity = data.umb_gmap_cities;
-                  this.activeCity = this.gcity[0];
+               // .subscribe(data => {
+               //      this.gcity = data.umb_gmap_cities;
+               //      this.activeCity = this.gcity[0];
                 // console.log(data.umb_gmap_cities.records))
-                  console.log(this.gcity[0]);
-          });
+                  // console.log(this.gcity[0]);
+          // });
               //this.activeCity;
 
           //  this.markers;
-            this.gcity;
-       //   console.log(this.gcity);
+        //    this.gcity;
      }
 
   // functionFilter(arg: string) {
@@ -94,12 +96,16 @@ export class GmapsComponent {
       title: marker.title,
       clickable: marker.clickable
     });
+    //console.log(markerPromise);
     this._markers.set(marker, markerPromise);
   }
 
-   onClick(city: string, i: number){
+   onClick(i: number,city: gCityType){
+     console.log('City cliked:'+city.city_name);
      console.log(city);
-     this.gmapsService.getCityMarkers(city)
+      this.lat = city.initial_lat;
+      this.lng = city.initial_lng;
+     this.gmapsService.getCityMarkers(city.city_name)
       .subscribe(data =>
           {
              this.CityMarkers = data.umb_gmap_markers;
@@ -109,15 +115,9 @@ export class GmapsComponent {
              //                 , longitude: "-73.907510"
              //                 , label: null
              //               });
-              // this.addMarker(
-                  // {
-                  //     latitude: "40.639294"
-                  //   , longitude: "-73.907510"
-                  //   , label: null
-                  // }
-              // );
+            this.addMarker(this.CityMarkers[0]);
           });
-
+        //this.addMarker(this.CityMarkers[0]);
         // this.lat = this.gcity[i].initial_lat;
         // this.lng = this.gcity[i].initial_lng;
    }
@@ -154,8 +154,8 @@ interface gCityType {
   city_id: number;
   city_name: string;
   initial_zoom_level: string;
-  initial_lat: string;
-  initial_lng: string;
+  initial_lat: number;
+  initial_lng: number;
   visible: string;
   city_short_name: string;
 }

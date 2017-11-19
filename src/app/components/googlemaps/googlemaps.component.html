@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="row no-gutters align-items-end" style="height: 68%;" >
-        <div *ngFor="let city of gcity; index as i;" class="col clearfix hidden-sm-down btn-cities text-center align-self-end" (click)="onClick(city.city_name,i)">
+        <div *ngFor="let city of gcity; index as i;" class="col clearfix hidden-sm-down btn-cities text-center align-self-end" (click)="onClick(i,city)">
           <h6>{{city.city_name}}</h6>
         </div>
 
@@ -39,8 +39,9 @@
     <!-- [scrollwheel]=false  disable auto zoom on scrolling down-->
       <!-- <agm-map [latitude]="activeCity?.initial_lat" [longitude]="activeCity?.initial_lng" [zoom]="activeCity?.initial_zoom_level" [mapTypeId]="'roadmap'" [scrollwheel]=false> -->
       <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="'roadmap'" [scrollwheel]=false>
-        <!-- <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker> -->
-        <agm-marker *ngFor="let m of CityMarkers; let i = index"
+        <agm-marker>
+        <!-- <agm-marker [latitude]="activeCity.initial_lat" [longitude]="activeCity.initial_lng"></agm-marker> -->
+         <!-- <agm-marker *ngFor="let m of CityMarkers; let i = index"
             (markerClick)="clickedMarker(m.label, i)"
             [latitude]="m.lat"
             [longitude]="m.lng"
@@ -48,7 +49,7 @@
             [markerDraggable]="m.draggable">
             <agm-info-window [disableAutoPan]="true">
              {{m.info}}
-          </agm-info-window>
+          </agm-info-window> -->
         </agm-marker>
       </agm-map>
     </div>
