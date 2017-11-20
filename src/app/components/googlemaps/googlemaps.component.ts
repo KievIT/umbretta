@@ -28,108 +28,63 @@ export class GmapsComponent {
    gcity: gCityType;
    defaultCityID: 0;
    // CityMarkers: CityMarkerType;
-    CityMarkers: AgmMarker;
- //  mymarker: AgmMarker;
+   CityMarkers: AgmMarker;
 
-  // console.log(mymarker);
-   // let id = mymarker.longtitude.push('40.705869');
-   // let id = mymarker.longtitude.push('-74.009936');
-
-   // markers: AgmMarker = [{
-   //        lat: 40.705869,
-   //        lng: 40.705869,
-   //        label: 'A',
-   //        info: 'Manhattan, Address Line 2',
-   //        initial_zoom_level: 15,
-   //        draggable: false
-   //      } ];
-
- // private arr: Array[];
-   constructor(private gmapsService: GmapsService, protected _mapsWrapper: GoogleMapsAPIWrapper, protected _zone: NgZone)
+   constructor(
+      private gmapsService: GmapsService
+      , protected _mapsWrapper: GoogleMapsAPIWrapper
+      , protected _zone: NgZone)
      {
-       //attributes which will be used in work
-     //  this.lat;
-     //  this.lng;
-    //   this.zoom;
-    //   this.activeCity;
-    //   this._markers;
        this.gmapsService.getCitiesJSON()
-              .subscribe(data => this.gcity = data.umb_gmap_cities);
+              .subscribe(data => {
+                this.gcity = data.umb_gmap_cities;
+                this.onClick(0, this.gcity[0]); //set up defaul city
+              });
      }
 
-  // functionFilter(arg: string) {
-  //   private num: number;
-  //    for(num=0;num<=arg.length();num++){
-  //       console.log(arg[num]);
-  //    }
-  // }
-
-  // myMarker(){
-  //   const markerPromise = this._mapsWrapper.createMarker(
-  //     {
-  //       position: {lat: 40.639294, lng: -73.907510},
-  //       label: 'A',
-  //       visible: true,
-  //       clickable: true
-  //     });
-  //     this._markers.set(markerPromise, markerPromise);
-  // }
-
-/*  addMarker(marker: AgmMarker) {
-    const markerPromise = this._mapsWrapper.createMarker({
-      position: {lat:  Number(marker.latitude), lng:  Number(marker.longitude)},
-      label: marker.label,
-      draggable: marker.draggable,
-      icon: marker.iconUrl,
-      opacity: marker.opacity,
-      visible: marker.visible,
-      zIndex: marker.zIndex,
-      title: marker.title,
-      clickable: marker.clickable
-    });
-    //console.log(markerPromise);
-    this._markers.set(marker, markerPromise);
-  }*/
-
    onClick(i: number,city: gCityType){
-     console.log('City cliked:'+city.city_name);
-     console.log(city);
+     // console.log('City cliked:'+city.city_name);
+     // console.log(city);
      this.lat = Number(city.initial_lat);
      this.lng = Number(city.initial_lng);
+     this.zoom =  Number(city.initial_zoom_level);
      this.gmapsService.getCityMarkers(city.city_name)
          .map((data) => {
            data.umb_gmap_markers.map(
                e => {
                  e.latitude =  Number(e.latitude);
                  e.longitude =  Number(e.longitude);
+                 e.draggable = false;
                }
            );
            return data.umb_gmap_markers;
          })
          .subscribe(data =>
           {
-             console.log(this.CityMarkers);
-             let i = 0;
-             for (let entry of this.CityMarkers) {
-               this.CityMarkers[i].latitude = Number(this.CityMarkers[i].latitude);
-               this.CityMarkers[i].longitude = Number(this.CityMarkers[i].longitude);
-               i++;
-             }
-             console.log(this.CityMarkers);
-             return this.CityMarkers;
-             // this._markers.set(              {
-             //                   latitude: "40.639294"
-             //                 , longitude: "-73.907510"
-             //                 , label: null
-             //               });
-          //  this.addMarker(this.CityMarkers[0]);
+             this.CityMarkers = data;
+             // console.log(this.CityMarkers);
           });
    }
 
    clickedMarker(label: string, index: number) {
-       console.log(`clicked the marker: ${label || index}`)
+       // console.log(`clicked the marker: ${label || index}`)
    }
 
+   /*  addMarker(marker: AgmMarker) {
+       const markerPromise = this._mapsWrapper.createMarker({
+         position: {lat:  Number(marker.latitude), lng:  Number(marker.longitude)},
+         label: marker.label,
+         draggable: marker.draggable,
+         icon: marker.iconUrl,
+         opacity: marker.opacity,
+         visible: marker.visible,
+         zIndex: marker.zIndex,
+         title: marker.title,
+         clickable: marker.clickable
+       });
+       //console.log(markerPromise);
+       this._markers.set(marker, markerPromise);
+     }*/
 }
 // just an interface for type safety.
 interface marker {
@@ -141,19 +96,19 @@ interface marker {
 	draggable: boolean;
 }
 
-export interface CityMarkerType {
-  marker_id: number;
-	latitude: number;
-	longitude: number;
-  clicable: boolean;
-  title: string;
-	label?: string;
-  info?:string;
-	draggable: boolean;
-  city: string;
-  status_cd: string;
-  create_date:string;
-}
+// export interface CityMarkerType {
+//   marker_id: number;
+// 	latitude: number;
+// 	longitude: number;
+//   clicable: boolean;
+//   title: string;
+// 	label?: string;
+//   info?:string;
+// 	draggable: boolean;
+//   city: string;
+//   status_cd: string;
+//   create_date:string;
+// }
 interface gCityType {
   city_id: number;
   city_name: string;

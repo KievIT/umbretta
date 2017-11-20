@@ -1,7 +1,8 @@
 .opportunity {
-background-image: url(/assets/opportunity.jpg);
-background-repeat: no-repeat;
-/*background-attachment: fixed;*/
-background-position: 50% 50%;
-background-size: cover;
+  background-image: url(/assets/stock-photo-weed-growing-through-crack-in-pavement-132499502.jpg);
+  background-repeat: no-repeat;
+  /*background-attachment: fixed;*/
+  background-position: 50% 50%;
+  background-size: cover;
+  padding: 5% 5% 5% 5%;
 }

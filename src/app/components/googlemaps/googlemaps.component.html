@@ -1,7 +1,7 @@
 <div class="row no-gutters" id="Map">
 <div class="col">
 <div class="row no-gutters">
-    <div class="col-10 push-1 col-sm-6 push-sm-3 LayoutText" style="height: 140px; margin: 20px 0 -160px 0; z-index: 100; background-color: rgba(255, 255, 255, 0,5);">
+    <div class="col-10 push-1 col-sm-6 push-sm-3 LayoutText" style="height: 100px; margin: 20px 0 -160px 0; z-index: 100; background-color: rgba(255, 255, 255, 0,5);">
       <div class="row no-gutters">
         <div class="col-sm-12 clearfix hidden-sm-down">
           <h2 class="text-center">Umbretta Kiosks on the Map</h2>
@@ -10,26 +10,19 @@
           <h5 class="text-center">Umbretta Kiosks on the Map</h5>
         </div>
       </div>
-      <div class="row no-gutters align-items-end" style="height: 68%;" >
-        <div *ngFor="let city of gcity; index as i;" class="col clearfix hidden-sm-down btn-cities text-center align-self-end" (click)="onClick(i,city)">
+      <div class="row no-gutters align-items-end" style="height: 40%;" >
+        <div *ngFor="let city of gcity; index as i;"
+              class="col clearfix hidden-sm-down btn-cities text-center align-self-end"
+              (click)="onClick(i,city)">
           <h6>{{city.city_name}}</h6>
         </div>
 
-        <div class="col clearfix hidden-sm-up btn-cities text-center align-self-end" (click)="onClick(40.705869, -74.009936)">
-          <h6>NY</h6>
+        <div *ngFor="let city of gcity; index as i;"
+              class="col clearfix hidden-sm-up btn-cities text-center align-self-end"
+              (click)="onClick(i,city)">
+          <h6>{{city.city_short_name}}</h6>
         </div>
-        <div class="col clearfix hidden-sm-up btn-cities text-center align-self-end" (click)="onClick(42.358852, -71.056855)">
-          <h6>Boston</h6>
-        </div>
-        <div class="col clearfix hidden-sm-up btn-cities text-center align-self-end" (click)="onClick(41.853854, -87.633130)">
-          <h6>Chicago</h6>
-        </div>
-        <div class="col clearfix hidden-sm-up btn-cities text-center align-self-end" (click)="onClick(34.049750, -118.33762)">
-          <h6>LA</h6>
-        </div>
-        <div class="col clearfix hidden-sm-up btn-cities text-center align-self-end" (click)="onClick(37.771725, -122.419750)">
-          <h6>San Francisco</h6>
-        </div>
+
       </div>
     </div>
 
