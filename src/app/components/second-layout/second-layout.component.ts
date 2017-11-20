@@ -7,14 +7,15 @@ import { ContentService} from '../../services/content.service';
   styleUrls: ['./second-layout.component.css'],
   providers: [ContentService]
 })
-export class secondLayout {
+export class secondLayout implements OnInit {
   private content: ContentType;
   private AdvertisementSolution: ContentType;
   private KioskFeaturesBlock1: ContentType;
   private KioskFeaturesBlock2: ContentType;
   private contentArray: ContentType[];
 
-  constructor(private contentService: ContentService) {
+  constructor(private contentService: ContentService) {  }
+  ngOnInit(){
     this.contentService.getPageText('5')
       .subscribe(Content => this.content = Content);
 
@@ -26,9 +27,7 @@ export class secondLayout {
 
     this.contentService.getPageText('12,13,14')
         .subscribe(ContentArray => this.AdvertisementSolution = ContentArray);
-
   }
-
 }
 
 interface ContentType {

@@ -8,15 +8,14 @@ import { ContentService} from '../../services/content.service';
   providers: [ContentService]
 })
 
-export class OpportunityComponent {
+export class OpportunityComponent implements OnInit {
   private content: ContentType;
   private contentArray: ContentType[];
-
-  constructor(private contentService: ContentService) {
-    this.contentService.getPageText('15')
-      .subscribe(contentArray => this.content = contentArray);
-    }
-
+  constructor(private contentService: ContentService) { }
+  ngOnInit() {
+      this.contentService.getPageText('15')
+        .subscribe(contentArray => this.content = contentArray);
+  }
 }
 
 interface ContentType {

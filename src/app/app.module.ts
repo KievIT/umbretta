@@ -10,19 +10,19 @@ import { NgbModule }              from '@ng-bootstrap/ng-bootstrap';
 
 //First Page Module seems like should be routed or somehow called.
 //FirstPageComponent it shows that it being running using Console.Log but display nothing
-import { environment }        from '../environments/environment';
-import { FirstPageModule }    from './pages/first-page/first-page.module';
-import { TestComponent }      from './components/test/test.component';
-import { navItemContent}      from './components/nav-item/nav-item';
-import { HeaderComponent}     from './components/header/header.component';
-import { NgbdAlert} from './components/alert-closeable/alert-closeable';
-import { GmapsComponent }     from './components/googlemaps/googlemaps.component';
-import { firstLayout}          from './components/firstLayout/firstLayout';
-import { innerLayoutContent }  from './components/innerLayout/innerLayout';
-import { secondLayout }       from './components/second-layout/second-layout.component';
-import { FormsComponent }     from './components/forms/forms.component';
-import { ContactComponent }   from './components/contact/contact.component';
-import {MessageService} from './services/message.service';
+import { environment }          from '../environments/environment';
+// import { FirstPageModule }      from './pages/first-page/first-page.module';
+import { TestComponent }        from './components/test/test.component';
+import { navItemContent}        from './components/nav-item/nav-item';
+import { HeaderComponent}       from './components/header/header.component';
+import { NgbdAlert}             from  './components/alert-closeable/alert-closeable';
+import { GmapsComponent }       from './components/googlemaps/googlemaps.component';
+import { firstLayout}           from './components/firstLayout/firstLayout';
+import { innerLayoutContent }   from './components/innerLayout/innerLayout';
+import { secondLayout }         from './components/second-layout/second-layout.component';
+import { FormsComponent }       from './components/forms/forms.component';
+import { ContactComponent }     from './components/contact/contact.component';
+import { MessageService }       from './services/message.service';
 import { OpportunityComponent } from './components/opportunity/opportunity.component';
 
 //let global = new Globals; //global parameters initialization
@@ -55,9 +55,7 @@ import { OpportunityComponent } from './components/opportunity/opportunity.compo
     BrowserModule,
     HttpModule,
     FormsModule,
-    NgbModule.forRoot(),
-    FirstPageModule
-
+    NgbModule.forRoot()
   ],
   providers: [MessageService, GoogleMapsAPIWrapper],
   bootstrap: [AppComponent]

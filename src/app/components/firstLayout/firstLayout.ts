@@ -1,24 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ContentService} from '../../services/content.service';
 @Component({
     selector: 'firstLayout',
     providers: [ContentService], //each API data provider need to be included here
     templateUrl: './firstLayout.html', // Auto required by webpack
 })
-export class firstLayout {
+export class firstLayout implements OnInit {
   private imgMachine = require("assets/machine1.png");
   private content: ContentType ;
   private contentArray: ContentType[];
-  constructor(
-     private contentService: ContentService
-  ){
-    // this.contentService.getAllPageText()
-    // .subscribe(contentArray => this.content = contentArray.firstPage);
-     this.contentService.getPageText('1')
-       .subscribe(Content => this.content = Content);
-     // this.imgMachine;
-     // console.log(this.content['name']);
-  };
+  constructor(private contentService: ContentService){ }
+  ngOnInit(){
+    this.contentService.getPageText('1')
+      .subscribe(Content => this.content = Content);
+  }
 }
 
 interface ContentType {

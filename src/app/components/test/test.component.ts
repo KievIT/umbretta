@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TestService} from '../../services/test.service';
 // import { AuthComponent} from 'auth/auth.component';
 @Component({
@@ -8,13 +8,14 @@ import { TestService} from '../../services/test.service';
    providers: [TestService] //each API data providen need to be included here
   // styleUrls: ['./app.component.css']
 })
-export class TestComponent {
+export class TestComponent implements OnInit{
   title: string;
   TestRecords : TestRecordsType;
   TestArray : TestRecordsType[];
   APIArray: TestRecordsType[];
-;
-  constructor (private testService: TestService){
+
+  constructor (private testService: TestService){ }
+  ngOnInit(){
     this.title =  'Lets rock!';
     this.TestRecords = {ID:1,TEXT_VAR_128:"Page1",TEXT_TEXT:"Some page 1"};
     this.TestArray =   [{"ID":1,"TEXT_VAR_128":"Page1","TEXT_TEXT":"Some page 1"}

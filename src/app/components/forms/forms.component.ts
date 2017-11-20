@@ -9,7 +9,7 @@ import {MessageService} from '../../services/message.service';
   styleUrls: ['./forms.component.css'],
    providers: [postformService]
 })
-export class FormsComponent  {
+export class FormsComponent implements OnInit  {
   show: boolean;
   buttonEnabled=true;
   user: User = new User();
@@ -17,13 +17,12 @@ export class FormsComponent  {
   // @Output() message_form: string;
   // @Output() type_form: string;
 
-  constructor(  private postformService: postformService, private messageService: MessageService) {
+  constructor( private postformService: postformService, private messageService: MessageService) {  }
+  ngOnInit(){
     this.buttonEnabled;
     this.show = false;
-
   }
 
-  // onInit(){}
   submit(user: User) {
      console.log(this.user);
      this.messageService.sendMessage('Email sending...', 'warning');
