@@ -1,4 +1,4 @@
-import { Component, Injectable, NgZone   }         from '@angular/core';
+import { Component, Injectable, NgZone, OnInit  }         from '@angular/core';
 import { AgmMarker }            from '@agm/core/directives/marker';
 import { GoogleMapsAPIWrapper } from '@agm/core/services/google-maps-api-wrapper';
 import { Marker }               from '@agm/core/services/google-maps-types';
@@ -17,7 +17,7 @@ import 'rxjs/add/operator/map'
 // <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="'hybrid'"></agm-map>
 //  Options are: 'roadmap' | 'hybrid' | 'satellite' | 'terrain'
 @Injectable()
-export class GmapsComponent {
+export class GmapsComponent implements OnInit{
 
 // protected _markers: Map<AgmMarker, Promise<Marker>> =   new Map<AgmMarker, Promise<Marker>>();
    zoom: number = 15; // google maps zoom level
@@ -33,8 +33,8 @@ export class GmapsComponent {
    constructor(
       private gmapsService: GmapsService
       , protected _mapsWrapper: GoogleMapsAPIWrapper
-      , protected _zone: NgZone)
-     {
+      , protected _zone: NgZone){}
+     ngOnInit() {
        this.gmapsService.getCitiesJSON()
               .subscribe(data => {
                 this.gcity = data.umb_gmap_cities;

@@ -47,12 +47,12 @@ if(isset($user["name"]) && isset($user["email"]) && $user["phone"])
   $email_admin ='o.talavas@gmail.com';
 
   if(send_email($email_admin, $subj_to_admin, $message_to_admin)&&send_email($user["email"], $subj_to_user, $message_to_user)){
-    $res['show'] = true;
+    $res['show'] = 'true';
     $res['type'] = "success";
     $res['message'] = "Your request was sent. Thank you!";
   	echo json_encode($res);
   }else{
-    $res['show'] = false;
+    $res['show'] = 'false';
     $res['type'] = "danger";
     $res['message'] = "Email sending failed.";
   	echo json_encode($res);

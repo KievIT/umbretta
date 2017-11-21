@@ -1,4 +1,5 @@
 import { BrowserModule }          from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { APP_BASE_HREF }          from '@angular/common';
 import { NgModule}                from '@angular/core';
 import { HttpModule }             from '@angular/http';
@@ -32,6 +33,7 @@ import { OpportunityComponent } from './components/opportunity/opportunity.compo
 @NgModule({
   //Declaration of Internal Application Components
   declarations: [
+
       AppComponent,
       TestComponent,
       NgbdAlert,
@@ -55,7 +57,8 @@ import { OpportunityComponent } from './components/opportunity/opportunity.compo
     BrowserModule,
     HttpModule,
     FormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [MessageService, GoogleMapsAPIWrapper],
   bootstrap: [AppComponent]

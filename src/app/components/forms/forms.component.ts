@@ -2,15 +2,37 @@ import { Component, OnInit, Output } from '@angular/core';
 import {postformService} from '../../services/postform.service';
 import {User} from './user';
 import {MessageService} from '../../services/message.service';
+import {trigger, state, style, animate, transition, keyframes} from '@angular/animations';
 
 @Component({
   selector: 'app-forms',
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.css'],
-   providers: [postformService]
+  providers: [postformService],
+  animations: [
+    trigger('formState', [
+      state('true', style({
+         display: 'none'
+      })),
+      state('false', style({
+        display: 'block'
+      })),
+      transition('false => true', animate('400ms ease-in', keyframes([
+        style({opacity: 0.8, height: '500px'}),
+        style({opacity: 0.6, height: '400px'}),
+        style({opacity: 0.4, height: '300px'}),
+        style({opacity: 0.3, height: '200px'}),
+        style({opacity: 0.2, height: '100px'}),
+        style({opacity: 0.1, height: '50px'}),
+        style({opacity: 0, height: '0'}),
+        // style({display: 'none'})
+      ]))),
+      // transition('active => inactive', animate('100ms ease-out'))
+      ])
+  ]
 })
 export class FormsComponent implements OnInit  {
-  show: boolean;
+  state: string;
   buttonEnabled=true;
   user: User = new User();
 
@@ -20,7 +42,7 @@ export class FormsComponent implements OnInit  {
   constructor( private postformService: postformService, private messageService: MessageService) {  }
   ngOnInit(){
     this.buttonEnabled;
-    this.show = false;
+    this.state = 'false';
   }
 
   submit(user: User) {
@@ -29,7 +51,7 @@ export class FormsComponent implements OnInit  {
      this.postformService.postDataUser(this.user)
      .subscribe(data => {
        this.messageService.sendMessage(data.json().message, data.json().type);
-       this.show = data.json().show;
+       this.state = data.json().show;
      });
 
      // {console.log(data.json());}
