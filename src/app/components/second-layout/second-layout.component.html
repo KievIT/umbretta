@@ -2,7 +2,7 @@
   <div class="col">
 
     <div class="row">
-      <div class="col text-center LayoutText" >
+      <div class="col text-center LayoutText align-items-center" >
         <br>
         <h2>{{content?.name}}</h2>
       </div>
@@ -12,7 +12,7 @@
 
       <div class="col-sm-4 offset-sm-1 col-xs">
         <div *ngFor = "let Features1 of KioskFeaturesBlock1" class="row">
-          <div class="col-sm"><br>
+          <div class="col-sm" ><br>
             <h4>{{Features1?.name}}</h4>
               {{Features1?.description}}
               <br><br>
@@ -40,7 +40,7 @@
       <div class="col-sm-5 offset-sm-6 clearfix hidden-sm-down" >
         <br>
         <h2 class="text-center">Advertisement solution</h2>
-          <div  class="row" *ngFor = "let adv of AdvertisementSolution">
+          <div  class="row" *ngFor = "let adv of AdvertisementSolution" style="padding: 1% 5% 5% 0%">
             <div class="col-sm">
               <h4 class="text-left">{{adv?.name}}</h4>
               {{adv?.description}}
